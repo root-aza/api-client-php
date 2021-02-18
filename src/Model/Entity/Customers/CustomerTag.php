@@ -9,7 +9,7 @@
 
 namespace RetailCrm\Api\Model\Entity\Customers;
 
-use JMS\Serializer\Annotation as JMS;
+use Symfony\Component\Serializer\Annotation\SerializedName;
 
 /**
  * Class CustomerTag
@@ -21,25 +21,19 @@ class CustomerTag
 {
     /**
      * @var string
-     *
-     * @JMS\Type("string")
-     * @JMS\SerializedName("name")
+     * @SerializedName("name")
      */
     public $name;
 
     /**
      * @var string $color Won't be used for create / edit.
-     *
-     * @JMS\Type("string")
-     * @JMS\SerializedName("color")
+     * @SerializedName("color")
      */
     public $color;
 
     /**
      * @var bool $attached Won't be used for create / edit.
-     *
-     * @JMS\Type("bool")
-     * @JMS\SerializedName("attached")
+     * @SerializedName("attached")
      */
     public $attached;
 

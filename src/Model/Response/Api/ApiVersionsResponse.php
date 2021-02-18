@@ -9,7 +9,7 @@
 
 namespace RetailCrm\Api\Model\Response\Api;
 
-use JMS\Serializer\Annotation as JMS;
+use Symfony\Component\Serializer\Annotation\SerializedName;
 use RetailCrm\Api\Model\Response\SuccessResponse;
 
 /**
@@ -22,9 +22,7 @@ class ApiVersionsResponse extends SuccessResponse
 {
     /**
      * @var string[]
-     *
-     * @JMS\Type("array<string>")
-     * @JMS\SerializedName("versions")
+     * @SerializedName("versions")
      */
     public $versions;
 }

@@ -23,7 +23,9 @@
     "php-http/discovery": "^1.13",
     "jms/serializer": "^3.11",
     "doctrine/annotations": "^1.11",
-    "doctrine/cache": "^1.10"
+    "doctrine/cache": "^1.10",
+    "symfony/serializer": "^5.2",
+    "symfony/property-access": "^5.2"
   },
   "require-dev": {
     "php-http/mock-client": "^1.0",

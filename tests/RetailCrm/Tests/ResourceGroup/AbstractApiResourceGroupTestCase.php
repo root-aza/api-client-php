@@ -10,27 +10,29 @@
 namespace RetailCrm\Tests\ResourceGroup;
 
 use Closure;
+use Doctrine\Common\Annotations\AnnotationReader;
 use Doctrine\Common\Cache\ArrayCache;
 use Http\Discovery\Psr17FactoryDiscovery;
 use Http\Mock\Client as MockClient;
 use InvalidArgumentException;
-use JMS\Serializer\Handler\HandlerRegistry;
-use JMS\Serializer\SerializerBuilder;
-use JMS\Serializer\SerializerInterface;
 use Metadata\Cache\DoctrineCacheAdapter;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ResponseFactoryInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\StreamFactoryInterface;
 use RetailCrm\Api\Builder\FormEncoderBuilder;
+use RetailCrm\Api\Component\Serializer\Encoder\FormDataEncoder;
 use RetailCrm\Api\Component\Serializer\JmsHandlersInjector;
 use RetailCrm\Api\Component\Utils;
+use RetailCrm\Api\Factory\SerializerFactory;
 use RetailCrm\Api\Interfaces\FormEncoderInterface;
 use RetailCrm\Api\Interfaces\RequestInterface as RetailCrmRequestInterface;
 use RetailCrm\Api\Interfaces\ResponseInterface as RetailCrmResponseInterface;
 use RetailCrm\Test\MatcherException;
 use RetailCrm\Test\RequestMatcher;
 use RetailCrm\Test\TestConfig;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Symfony\Component\Serializer\SerializerInterface;
 
 /**
  * Class AbstractApiResourceGroupTestCase
@@ -42,9 +44,6 @@ abstract class AbstractApiResourceGroupTestCase extends TestCase
 {
     /** @var SerializerInterface */
     protected static $serializer;
-
-    /** @var \RetailCrm\Api\Interfaces\FormEncoderInterface */
-    protected static $formEncoder;
 
     /** @var ResponseFactoryInterface */
     protected static $responseFactory;
@@ -80,7 +79,9 @@ abstract class AbstractApiResourceGroupTestCase extends TestCase
                 break;
             case 'array':
             case 'object':
-                $data = static::getStreamFactory()->createStream(static::getSerializer()->serialize($response, 'json'));
+                $data = static::getStreamFactory()->createStream(
+                    static::getSerializer()->serialize($response, JsonEncoder::FORMAT)
+                );
                 break;
             default:
                 throw new InvalidArgumentException(sprintf(
@@ -130,7 +131,7 @@ abstract class AbstractApiResourceGroupTestCase extends TestCase
      */
     public static function encodeForm(RetailCrmRequestInterface $request): string
     {
-        return static::getFormEncoder()->encode($request);
+        return static::getSerializer()->serialize($request, FormDataEncoder::FORMAT);
     }
 
     /**
@@ -141,7 +142,7 @@ abstract class AbstractApiResourceGroupTestCase extends TestCase
      */
     public static function encodeFormArray(RetailCrmRequestInterface $request): array
     {
-        return static::clearArray(static::getFormEncoder()->encodeArray($request));
+        return static::clearArray(static::getSerializer()->normalize($request, FormDataEncoder::FORMAT));
     }
 
     /**
@@ -151,7 +152,7 @@ abstract class AbstractApiResourceGroupTestCase extends TestCase
      */
     public static function serialize($value): string
     {
-        return static::getSerializer()->serialize($value, 'json');
+        return static::getSerializer()->serialize($value, JsonEncoder::FORMAT);
     }
 
     /**
@@ -197,7 +198,7 @@ abstract class AbstractApiResourceGroupTestCase extends TestCase
         bool $stripNilValues = false
     ): void {
         $expected = json_decode($expectedJson, true, 512, JSON_THROW_ON_ERROR);
-        $actual   = self::getSerializer()->toArray($response);
+        $actual   = self::getSerializer()->normalize($response);
 
         if ($stripNilValues) {
             $expected = static::clearArray($expected);
@@ -220,7 +221,7 @@ abstract class AbstractApiResourceGroupTestCase extends TestCase
         Closure $callback
     ): void {
         $expected = json_decode($expectedJson, true, 512, JSON_THROW_ON_ERROR);
-        $actual   = self::getSerializer()->toArray($response);
+        $actual   = self::getSerializer()->normalize($response);
 
         $callback($expected, $actual);
     }
@@ -268,34 +269,14 @@ abstract class AbstractApiResourceGroupTestCase extends TestCase
     }
 
     /**
-     * @return \JMS\Serializer\SerializerInterface
+     * @return \Symfony\Component\Serializer\SerializerInterface
      */
     protected static function getSerializer(): SerializerInterface
     {
         if (null === static::$serializer) {
-            static::$serializer = SerializerBuilder::create()
-                ->configureHandlers(function (HandlerRegistry $registry) {
-                    JmsHandlersInjector::registerLibraryHandlers($registry);
-                })
-                ->addDefaultHandlers()
-                ->addDefaultListeners()
-                ->setMetadataCache(new DoctrineCacheAdapter('retailcrm', new ArrayCache()))
-                ->build();
+            static::$serializer = SerializerFactory::createSerializer(new AnnotationReader());
         }
 
         return static::$serializer;
-    }
-
-    /**
-     * @return \RetailCrm\Api\Interfaces\FormEncoderInterface
-     * @throws \RetailCrm\Api\Exception\BuilderException
-     */
-    private static function getFormEncoder(): FormEncoderInterface
-    {
-        if (null === static::$formEncoder) {
-            static::$formEncoder = (new FormEncoderBuilder())->build();
-        }
-
-        return static::$formEncoder;
     }
 }

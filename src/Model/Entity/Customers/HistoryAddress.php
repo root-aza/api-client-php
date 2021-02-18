@@ -9,7 +9,7 @@
 
 namespace RetailCrm\Api\Model\Entity\Customers;
 
-use JMS\Serializer\Annotation as JMS;
+use Symfony\Component\Serializer\Annotation\SerializedName;
 
 /**
  * Class HistoryAddress
@@ -21,33 +21,25 @@ class HistoryAddress
 {
     /**
      * @var int
-     *
-     * @JMS\Type("int")
-     * @JMS\SerializedName("id")
+     * @SerializedName("id")
      */
     public $id;
 
     /**
      * @var string
-     *
-     * @JMS\Type("string")
-     * @JMS\SerializedName("externalId")
+     * @SerializedName("externalId")
      */
     public $externalId;
 
     /**
      * @var string
-     *
-     * @JMS\Type("string")
-     * @JMS\SerializedName("name")
+     * @SerializedName("name")
      */
     public $name;
 
     /**
      * @var bool
-     *
-     * @JMS\Type("bool")
-     * @JMS\SerializedName("isMain")
+     * @SerializedName("isMain")
      */
     public $isMain;
 }

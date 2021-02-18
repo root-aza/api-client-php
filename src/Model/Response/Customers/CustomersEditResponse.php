@@ -9,7 +9,7 @@
 
 namespace RetailCrm\Api\Model\Response\Customers;
 
-use JMS\Serializer\Annotation as JMS;
+use Symfony\Component\Serializer\Annotation\SerializedName;
 use RetailCrm\Api\Model\Response\IdResponse;
 
 /**
@@ -22,9 +22,7 @@ class CustomersEditResponse extends IdResponse
 {
     /**
      * @var string
-     *
-     * @JMS\Type("string")
-     * @JMS\SerializedName("state")
+     * @SerializedName("state")
      */
     public $state;
 }

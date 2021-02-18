@@ -9,7 +9,7 @@
 
 namespace RetailCrm\Api\Model\Entity\CustomFields;
 
-use JMS\Serializer\Annotation as JMS;
+use Symfony\Component\Serializer\Annotation\SerializedName;
 
 /**
  * Class CustomField
@@ -21,105 +21,79 @@ class CustomField
 {
     /**
      * @var string
-     *
-     * @JMS\Type("string")
-     * @JMS\SerializedName("name")
+     * @SerializedName("name")
      */
     public $name;
 
     /**
      * @var string
-     *
-     * @JMS\Type("string")
-     * @JMS\SerializedName("code")
+     * @SerializedName("code")
      */
     public $code;
 
     /**
      * @var bool
-     *
-     * @JMS\Type("bool")
-     * @JMS\SerializedName("required")
+     * @SerializedName("required")
      */
     public $required;
 
     /**
      * @var bool
-     *
-     * @JMS\Type("bool")
-     * @JMS\SerializedName("inFilter")
+     * @SerializedName("inFilter")
      */
     public $inFilter;
 
     /**
      * @var bool
-     *
-     * @JMS\Type("bool")
-     * @JMS\SerializedName("inList")
+     * @SerializedName("inList")
      */
     public $inList;
 
     /**
      * @var bool
-     *
-     * @JMS\Type("bool")
-     * @JMS\SerializedName("inGroupActions")
+     * @SerializedName("inGroupActions")
      */
     public $inGroupActions;
 
     /**
      * @var string
-     *
-     * @JMS\Type("string")
-     * @JMS\SerializedName("type")
+     * @SerializedName("type")
      */
     public $type;
 
     /**
      * @var string
-     *
-     * @JMS\Type("string")
-     * @JMS\SerializedName("entity")
+     * @SerializedName("entity")
      */
     public $entity;
 
     /**
      * @var string
-     *
-     * @JMS\Type("string")
-     * @JMS\SerializedName("default")
+     * @SerializedName("default")
      */
     public $default;
 
     /**
      * @var int
-     *
-     * @JMS\Type("int")
-     * @JMS\SerializedName("ordering")
+     * @SerializedName("ordering")
      */
     public $ordering;
 
     /**
      * @var string
-     *
-     * @JMS\Type("string")
-     * @JMS\SerializedName("displayArea")
+     * @SerializedName("displayArea")
      */
     public $displayArea;
 
     /**
      * @var string
-     *
-     * @JMS\Type("string")
-     * @JMS\SerializedName("viewMode")
+     * @SerializedName("viewMode")
      */
     public $viewMode;
 
     /**
      * @var string
-     *
-     * @JMS\Type("string")
-     * @JMS\SerializedName("dictionary")
+     * @SerializedName("dictionary")
      */
     public $dictionary;
 }

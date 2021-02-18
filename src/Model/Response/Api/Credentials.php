@@ -9,7 +9,7 @@
 
 namespace RetailCrm\Api\Model\Response\Api;
 
-use JMS\Serializer\Annotation as JMS;
+use Symfony\Component\Serializer\Annotation\SerializedName;
 use RetailCrm\Api\Model\Response\SuccessResponse;
 
 /**
@@ -22,25 +22,19 @@ class Credentials extends SuccessResponse
 {
     /**
      * @var string[]
-     *
-     * @JMS\Type("array<string>")
-     * @JMS\SerializedName("credentials")
+     * @SerializedName("credentials")
      */
     public $credentials;
 
     /**
      * @var string
-     *
-     * @JMS\Type("string")
-     * @JMS\SerializedName("siteAccess")
+     * @SerializedName("siteAccess")
      */
     public $siteAccess;
 
     /**
      * @var string[]
-     *
-     * @JMS\Type("array<string>")
-     * @JMS\SerializedName("sitesAvailable")
+     * @SerializedName("sitesAvailable")
      */
     public $sitesAvailable;
 }

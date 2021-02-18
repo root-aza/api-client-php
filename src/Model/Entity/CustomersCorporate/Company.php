@@ -10,7 +10,7 @@
 namespace RetailCrm\Api\Model\Entity\CustomersCorporate;
 
 use DateTime;
-use JMS\Serializer\Annotation as JMS;
+use Symfony\Component\Serializer\Annotation\SerializedName;
 
 /**
  * Class Company
@@ -22,89 +22,70 @@ class Company
 {
     /**
      * @var int
-     *
-     * @JMS\Type("int")
-     * @JMS\SerializedName("id")
+     * @SerializedName("id")
      */
     public $id;
 
     /**
      * @var bool
-     *
-     * @JMS\Type("bool")
-     * @JMS\SerializedName("isMain")
+     * @SerializedName("isMain")
      */
     public $isMain;
 
     /**
      * @var string
-     *
-     * @JMS\Type("string")
-     * @JMS\SerializedName("externalId")
+     * @SerializedName("externalId")
      */
     public $externalId;
 
     /**
      * @var bool
-     *
-     * @JMS\Type("bool")
-     * @JMS\SerializedName("active")
+     * @SerializedName("active")
      */
     public $active;
 
     /**
      * @var string
-     *
-     * @JMS\Type("string")
-     * @JMS\SerializedName("name")
+     * @SerializedName("name")
      */
     public $name;
 
     /**
      * @var string
-     *
-     * @JMS\Type("string")
-     * @JMS\SerializedName("brand")
+     * @SerializedName("brand")
      */
     public $brand;
 
     /**
      * @var string
-     *
-     * @JMS\Type("string")
-     * @JMS\SerializedName("site")
+     * @SerializedName("site")
      */
     public $site;
 
     /**
      * @var DateTime
      *
-     * @JMS\Type("DateTime<'Y-m-d H:i:s'>")
-     * @JMS\SerializedName("createdAt")
+     * @SerializedName("createdAt")
      */
     public $createdAt;
 
     /**
      * @var \RetailCrm\Api\Model\Entity\Customers\CustomerContragent
      *
-     * @JMS\Type("RetailCrm\Api\Model\Entity\Customers\CustomerContragent")
-     * @JMS\SerializedName("contragent")
+     * @SerializedName("contragent")
      */
     public $contragent;
 
     /**
      * @var \RetailCrm\Api\Model\Entity\CustomersCorporate\EntityWithExternalIdInput
      *
-     * @JMS\Type("RetailCrm\Api\Model\Entity\CustomersCorporate\EntityWithExternalIdInput")
-     * @JMS\SerializedName("address")
+     * @SerializedName("address")
      */
     public $address;
 
     /**
      * @var array<string, mixed>
-     *
-     * @JMS\Type("array")
-     * @JMS\SerializedName("customFields")
+     * @SerializedName("customFields")
      */
     public $customFields;
 }

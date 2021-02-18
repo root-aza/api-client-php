@@ -10,7 +10,7 @@
 namespace RetailCrm\Api\Model\Request\Customers;
 
 use RetailCrm\Api\Interfaces\RequestInterface;
-use RetailCrm\Api\Component\FormData\Mapping as Form;
+use Symfony\Component\Serializer\Annotation\SerializedName;
 use RetailCrm\Api\Model\Request\Traits\PageLimitTrait;
 
 /**
@@ -26,8 +26,7 @@ class CustomersHistoryRequest implements RequestInterface
     /**
      * @var \RetailCrm\Api\Model\Filter\Customers\CustomerHistoryFilter
      *
-     * @Form\Type("RetailCrm\Api\Model\Filter\Customers\CustomerHistoryFilter")
-     * @Form\SerializedName("filter")
+     * @SerializedName("filter")
      */
     public $filter;
 }

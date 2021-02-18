@@ -9,7 +9,7 @@
 
 namespace RetailCrm\Api\Model\Request\CustomFields;
 
-use RetailCrm\Api\Component\FormData\Mapping as Form;
+use Symfony\Component\Serializer\Annotation\SerializedName;
 use RetailCrm\Api\Interfaces\RequestInterface;
 
 /**
@@ -23,8 +23,7 @@ class CustomFieldsCreateRequest implements RequestInterface
     /**
      * @var \RetailCrm\Api\Model\Entity\CustomFields\CustomField
      *
-     * @Form\Type("RetailCrm\Api\Model\Entity\CustomFields\CustomField")
-     * @Form\SerializedName("customField")
+     * @SerializedName("customField")
      */
     public $customField;
 }

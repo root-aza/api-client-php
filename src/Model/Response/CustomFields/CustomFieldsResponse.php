@@ -9,7 +9,7 @@
 
 namespace RetailCrm\Api\Model\Response\CustomFields;
 
-use JMS\Serializer\Annotation as JMS;
+use Symfony\Component\Serializer\Annotation\SerializedName;
 use RetailCrm\Api\Model\Response\AbstractPaginatedResponse;
 
 /**
@@ -23,8 +23,7 @@ class CustomFieldsResponse extends AbstractPaginatedResponse
     /**
      * @var \RetailCrm\Api\Model\Entity\CustomFields\CustomField[]
      *
-     * @JMS\Type("array<RetailCrm\Api\Model\Entity\CustomFields\CustomField>")
-     * @JMS\SerializedName("customFields")
+     * @SerializedName("customFields")
      */
     public $customFields;
 }

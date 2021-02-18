@@ -10,7 +10,7 @@
 namespace RetailCrm\Api\Model\Request\Costs;
 
 use RetailCrm\Api\Interfaces\RequestInterface;
-use RetailCrm\Api\Component\FormData\Mapping as Form;
+use Symfony\Component\Serializer\Annotation\SerializedName;
 use RetailCrm\Api\Model\Request\Traits\PageLimitTrait;
 
 /**
@@ -26,8 +26,7 @@ class CostsRequest implements RequestInterface
     /**
      * @var \RetailCrm\Api\Model\Filter\Costs\CostFilter
      *
-     * @Form\Type("RetailCrm\Api\Model\Filter\Costs\CostFilter")
-     * @Form\SerializedName("filter")
+     * @SerializedName("filter")
      */
     public $filter;
 }

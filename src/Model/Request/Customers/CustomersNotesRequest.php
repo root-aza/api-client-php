@@ -11,7 +11,7 @@ namespace RetailCrm\Api\Model\Request\Customers;
 
 use RetailCrm\Api\Interfaces\RequestInterface;
 use RetailCrm\Api\Model\Request\Traits\PageLimitTrait;
-use RetailCrm\Api\Component\FormData\Mapping as Form;
+use Symfony\Component\Serializer\Annotation\SerializedName;
 
 /**
  * Class CustomersNotesRequest
@@ -26,8 +26,7 @@ class CustomersNotesRequest implements RequestInterface
     /**
      * @var \RetailCrm\Api\Model\Filter\Customers\CustomerNoteFilter
      *
-     * @Form\Type("RetailCrm\Api\Model\Filter\Customers\CustomerNoteFilter")
-     * @Form\SerializedName("filter")
+     * @SerializedName("filter")
      */
     public $filter;
 }

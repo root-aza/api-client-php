@@ -9,7 +9,7 @@
 
 namespace RetailCrm\Api\Model\Request\Customers;
 
-use RetailCrm\Api\Component\FormData\Mapping as Form;
+use Symfony\Component\Serializer\Annotation\SerializedName;
 use RetailCrm\Api\Interfaces\RequestInterface;
 
 /**
@@ -23,17 +23,14 @@ class CustomersUploadRequest implements RequestInterface
     /**
      * @var string
      *
-     * @Form\Type("string")
-     * @Form\SerializedName("site")
+     * @SerializedName("site")
      */
     public $site;
 
     /**
      * @var \RetailCrm\Api\Model\Entity\Customers\Customer[]
      *
-     * @Form\Type("array<RetailCrm\Api\Model\Entity\Customers\Customer>")
-     * @Form\SerializedName("customers")
-     * @Form\JsonField()
+     * @SerializedName("customers")
      */
     public $customers;
 }

@@ -9,7 +9,7 @@
 
 namespace RetailCrm\Api\Model\Response;
 
-use JMS\Serializer\Annotation as JMS;
+use Symfony\Component\Serializer\Annotation\SerializedName;
 use RetailCrm\Api\Model\Entity\Pagination;
 
 /**
@@ -23,8 +23,7 @@ abstract class AbstractPaginatedResponse extends SuccessResponse
     /**
      * @var Pagination
      *
-     * @JMS\Type("RetailCrm\Api\Model\Entity\Pagination")
-     * @JMS\SerializedName("pagination")
+     * @SerializedName("pagination")
      */
     public $pagination;
 }

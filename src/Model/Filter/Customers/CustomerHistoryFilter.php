@@ -10,7 +10,7 @@
 namespace RetailCrm\Api\Model\Filter\Customers;
 
 use DateTime;
-use RetailCrm\Api\Component\FormData\Mapping as Form;
+use Symfony\Component\Serializer\Annotation\SerializedName;
 
 /**
  * Class CustomerHistoryFilter
@@ -23,40 +23,35 @@ class CustomerHistoryFilter
     /**
      * @var int
      *
-     * @Form\Type("int")
-     * @Form\SerializedName("customerId")
+     * @SerializedName("customerId")
      */
     public $customerId;
 
     /**
      * @var int
      *
-     * @Form\Type("int")
-     * @Form\SerializedName("sinceId")
+     * @SerializedName("sinceId")
      */
     public $sinceId;
 
     /**
      * @var string
      *
-     * @Form\Type("string")
-     * @Form\SerializedName("customerExternalId")
+     * @SerializedName("customerExternalId")
      */
     public $customerExternalId;
 
     /**
      * @var DateTime
      *
-     * @Form\Type("DateTime<'Y-m-d H:i:s'>")
-     * @Form\SerializedName("startDate")
+     * @SerializedName("startDate")
      */
     public $startDate;
 
     /**
      * @var DateTime
      *
-     * @Form\Type("DateTime<'Y-m-d H:i:s'>")
-     * @Form\SerializedName("endDate")
+     * @SerializedName("endDate")
      */
     public $endDate;
 }

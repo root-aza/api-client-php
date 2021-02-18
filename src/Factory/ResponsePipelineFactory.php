@@ -9,11 +9,11 @@
 
 namespace RetailCrm\Api\Factory;
 
-use JMS\Serializer\SerializerInterface;
 use RetailCrm\Api\Handler\Response\AccountNotFoundHandler;
 use RetailCrm\Api\Handler\Response\ErrorResponseHandler;
 use RetailCrm\Api\Handler\Response\UnmarshalResponseHandler;
 use RetailCrm\Api\Interfaces\HandlerInterface;
+use Symfony\Component\Serializer\SerializerInterface;
 
 /**
  * Class ResponsePipelineFactory
@@ -26,8 +26,8 @@ class ResponsePipelineFactory
     /**
      * Creates default response pipeline.
      *
-     * @param \JMS\Serializer\SerializerInterface        $serializer
-     * @param \RetailCrm\Api\Interfaces\HandlerInterface ...$additionalHandlers
+     * @param \Symfony\Component\Serializer\SerializerInterface $serializer
+     * @param \RetailCrm\Api\Interfaces\HandlerInterface        ...$additionalHandlers
      *
      * @return \RetailCrm\Api\Interfaces\HandlerInterface
      */

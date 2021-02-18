@@ -9,6 +9,10 @@
 
 namespace RetailCrm\Api\Builder;
 
+use Doctrine\Common\Annotations\AnnotationReader;
+use Doctrine\Common\Annotations\CachedReader;
+use Doctrine\Common\Cache\Cache;
+use Doctrine\Common\Cache\FilesystemCache;
 use Http\Discovery\Psr18ClientDiscovery;
 use Psr\Http\Client\ClientInterface;
 use Psr\Log\LoggerInterface;
@@ -18,11 +22,13 @@ use RetailCrm\Api\Component\Transformer\ResponseTransformer;
 use RetailCrm\Api\Exception\BuilderException;
 use RetailCrm\Api\Factory\RequestPipelineFactory;
 use RetailCrm\Api\Factory\ResponsePipelineFactory;
+use RetailCrm\Api\Factory\SerializerFactory;
 use RetailCrm\Api\Interfaces\BuilderInterface;
-use RetailCrm\Api\Interfaces\FormEncoderInterface;
 use RetailCrm\Api\Interfaces\HandlerInterface;
 use RetailCrm\Api\Interfaces\RequestTransformerInterface;
 use RetailCrm\Api\Interfaces\ResponseTransformerInterface;
+use RuntimeException;
+use Symfony\Component\Serializer\SerializerInterface;
 
 /**
  * Class ClientBuilder
@@ -34,6 +40,8 @@ use RetailCrm\Api\Interfaces\ResponseTransformerInterface;
  */
 class ClientBuilder implements BuilderInterface
 {
+    private const CACHE_DIR_NAME = 'retailcrm_metadata_cache';
+
     /** @var string */
     private $apiUrl;
 
@@ -46,14 +54,20 @@ class ClientBuilder implements BuilderInterface
     /** @var ?\Psr\Log\LoggerInterface */
     private $debugLogger;
 
+    /** @var string */
+    private $cacheDir;
+
+    /** @var \Doctrine\Common\Cache\Cache|null */
+    private $cache;
+
     /** @var RequestTransformerInterface|null */
     private $requestTransformer;
 
     /** @var ?\RetailCrm\Api\Interfaces\ResponseTransformerInterface */
     protected $responseTransformer;
 
-    /** @var ?\RetailCrm\Api\Interfaces\FormEncoderInterface */
-    private $formEncoder;
+    /** @var \Symfony\Component\Serializer\SerializerInterface|null */
+    private $serializer;
 
     /**
      * API URL. Looks like this: "https://test.retailcrm.pro/"
@@ -116,6 +130,38 @@ class ClientBuilder implements BuilderInterface
     }
 
     /**
+     * Sets cache directory.
+     *
+     * This directory will be used by AnnotationReader component to store annotations cache.
+     * Annotations parsing consumes a lot of resources, which is the reason why you should cache results.
+     *
+     * @param string $cacheDir
+     *
+     * @return ClientBuilder
+     */
+    public function setCacheDir(string $cacheDir): ClientBuilder
+    {
+        $this->cacheDir = $cacheDir;
+        return $this;
+    }
+
+    /**
+     * Sets cache implementation.
+     *
+     * This cache implementation will be used by AnnotationReader component to store annotations cache.
+     * Any cache from `doctrine/cache` should work just fine.
+     *
+     * @param \Doctrine\Common\Cache\Cache $cache
+     *
+     * @return ClientBuilder
+     */
+    public function setCache(Cache $cache): ClientBuilder
+    {
+        $this->cache = $cache;
+        return $this;
+    }
+
+    /**
      * Set request transformer into API client.
      *
      * You can use this method to set your request transformer which will execute the pipeline.
@@ -136,7 +182,7 @@ class ClientBuilder implements BuilderInterface
      *
      * You can use this method to set your response transformer which will execute the pipeline.
      * The default response transformer doesn't do anything besides calling provided chain of handlers.
-     * The serializer instance for the request pipeline can be inferred from the provided FormEncoder instance.
+     * The serializer instance for the request pipeline can be inferred from the provided FormDataEncoder instance.
      *
      * @param \RetailCrm\Api\Interfaces\ResponseTransformerInterface|null $responseTransformer
      *
@@ -149,18 +195,18 @@ class ClientBuilder implements BuilderInterface
     }
 
     /**
-     * Set form encoder into API client.
+     * Set Symfony Serializer instance into API client.
      *
-     * Form encoder is a vital part of the API client. Its purpose is to transform provided request models
-     * into form-data. The result will be used as a query or POST body (depends on request type).
+     * Use only if you really need to inject your own instance. Keep in mind: our instance uses custom normalizers and
+     * encoders, which should be provided. Otherwise API client will not work properly.
      *
-     * @param \RetailCrm\Api\Interfaces\FormEncoderInterface $formEncoder
+     * @param \Symfony\Component\Serializer\SerializerInterface $serializer
      *
      * @return ClientBuilder
      */
-    public function setFormEncoder(FormEncoderInterface $formEncoder): ClientBuilder
+    public function setSerializer(SerializerInterface $serializer): ClientBuilder
     {
-        $this->formEncoder = $formEncoder;
+        $this->serializer = $serializer;
         return $this;
     }
 
@@ -172,6 +218,8 @@ class ClientBuilder implements BuilderInterface
     public function build(): Client
     {
         $this->validateBuilder();
+        $this->buildCache();
+        $this->buildSerializer();
 
         if (
             null !== $this->authenticator &&
@@ -218,6 +266,35 @@ class ClientBuilder implements BuilderInterface
     }
 
     /**
+     * Builds cache if needed.
+     */
+    private function buildCache(): void
+    {
+        if (null === $this->cache && !empty($this->cacheDir) && is_dir($this->cacheDir)) {
+            $this->createDir($this->cacheDir . static::CACHE_DIR_NAME);
+            $this->cache = new FilesystemCache($this->cacheDir . static::CACHE_DIR_NAME);
+        }
+    }
+
+    /**
+     * Builds serializer.
+     */
+    private function buildSerializer(): void
+    {
+        if (null !== $this->serializer) {
+            return;
+        }
+
+        $annotationReader = new AnnotationReader();
+
+        if (null !== $this->cache) {
+            $annotationReader = new CachedReader(new AnnotationReader(), $this->cache);
+        }
+
+        $this->serializer = SerializerFactory::createSerializer($annotationReader);
+    }
+
+    /**
      * Builds RequestTransformer with default pipeline and authenticator.
      *
      * @return \RetailCrm\Api\Component\Transformer\RequestTransformer
@@ -225,11 +302,8 @@ class ClientBuilder implements BuilderInterface
      */
     private function buildRequestTransformer(): RequestTransformer
     {
-        if (null === $this->formEncoder) {
-            throw new BuilderException(
-                "You must provide a FormEncoder instance in order to delegate " .
-                "RequestTransformer instantiation to the ClientBuilder."
-            );
+        if (null === $this->serializer) {
+            throw new BuilderException('Serializer must be set');
         }
 
         if (null === $this->authenticator) {
@@ -240,7 +314,7 @@ class ClientBuilder implements BuilderInterface
         }
 
         return new RequestTransformer(
-            RequestPipelineFactory::createDefaultPipeline($this->formEncoder, $this->authenticator)
+            RequestPipelineFactory::createDefaultPipeline($this->serializer, $this->authenticator)
         );
     }
 
@@ -252,15 +326,29 @@ class ClientBuilder implements BuilderInterface
      */
     private function buildResponseTransformer(): ResponseTransformer
     {
-        if (null === $this->formEncoder) {
+        if (null === $this->serializer) {
             throw new BuilderException(
-                "You must provide a FormEncoder instance in order to delegate " .
+                "You must provide a SerializerInterface instance in order to delegate " .
                 "ResponseTransformer instantiation to the ClientBuilder."
             );
         }
 
         return new ResponseTransformer(
-            ResponsePipelineFactory::createDefaultPipeline($this->formEncoder->getSerializer())
+            ResponsePipelineFactory::createDefaultPipeline($this->serializer)
         );
+    }
+
+    /**
+     * @param string $dir
+     */
+    private function createDir(string $dir): void
+    {
+        if (is_dir($dir)) {
+            return;
+        }
+
+        if (false === mkdir($dir, 0777, true) && false === is_dir($dir)) {
+            throw new RuntimeException(sprintf('Could not create directory "%s".', $dir));
+        }
     }
 }

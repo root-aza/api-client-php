@@ -12,7 +12,6 @@ namespace RetailCrm\Tests\ResourceGroup;
 use RetailCrm\Api\Enum\ByIdentifier;
 use RetailCrm\Api\Enum\Customers\ContragentType;
 use RetailCrm\Api\Enum\Customers\CustomerType;
-use RetailCrm\Api\Enum\Customers\SerializedCustomerReference;
 use RetailCrm\Api\Enum\RequestMethod;
 use RetailCrm\Api\Model\Entity\Customers\Customer;
 use RetailCrm\Api\Model\Entity\Customers\CustomerAddress;
@@ -21,6 +20,7 @@ use RetailCrm\Api\Model\Entity\Customers\CustomerNote;
 use RetailCrm\Api\Model\Entity\Customers\CustomerPhone;
 use RetailCrm\Api\Model\Entity\Customers\CustomerTag;
 use RetailCrm\Api\Model\Entity\Customers\FixExternalRow;
+use RetailCrm\Api\Model\Entity\Customers\SerializedCustomerReference;
 use RetailCrm\Api\Model\Filter\Customers\CustomerFilter;
 use RetailCrm\Api\Model\Filter\Customers\CustomerHistoryFilter;
 use RetailCrm\Api\Model\Filter\Customers\CustomerNoteFilter;
@@ -2644,27 +2644,10 @@ EOF;
             static::responseJson(200, $json)
         );
 
-        $client = TestClientFactory::createClient($mock);
-        $costs  = $client->customers->get(4770, $request);
+        $client   = TestClientFactory::createClient($mock);
+        $response = $client->customers->get(4770, $request);
 
-        self::assertModelsCallback($json, $costs, static function ($expected, $actual) {
-            $actualTags                                 = $actual['customer']['tags'];
-            $actual['customer']['tags']                 = array_filter(
-                array_map(static function ($tag) use ($actualTags) {
-                    if (in_array($tag['name'], $actualTags, true)) {
-                        return $tag;
-                    }
-                }, $expected['customer']['tags'])
-            );
-            $expected['customer']['marginSumm']         = (float)$expected['customer']['marginSumm'];
-            $expected['customer']['totalSumm']          = (float)$expected['customer']['totalSumm'];
-            $expected['customer']['averageSumm']        = (float)$expected['customer']['averageSumm'];
-            $expected['customer']['costSumm']           = (float)$expected['customer']['costSumm'];
-            $expected['customer']['personalDiscount']   = (float)$expected['customer']['personalDiscount'];
-            $expected['customer']['cumulativeDiscount'] = (float)$expected['customer']['cumulativeDiscount'];
-
-            self::assertEquals($expected, $actual);
-        });
+        self::assertModelEqualsToResponse($json, $response);
     }
 
     public function testCustomersEdit(): void

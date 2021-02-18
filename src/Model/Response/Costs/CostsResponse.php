@@ -9,7 +9,7 @@
 
 namespace RetailCrm\Api\Model\Response\Costs;
 
-use JMS\Serializer\Annotation as JMS;
+use Symfony\Component\Serializer\Annotation\SerializedName;
 use RetailCrm\Api\Model\Response\AbstractPaginatedResponse;
 
 /**
@@ -23,8 +23,7 @@ class CostsResponse extends AbstractPaginatedResponse
     /**
      * @var \RetailCrm\Api\Model\Entity\Costs\Cost[]
      *
-     * @JMS\Type("array<RetailCrm\Api\Model\Entity\Costs\Cost>")
-     * @JMS\SerializedName("costs")
+     * @SerializedName("costs")
      */
     public $costs;
 }

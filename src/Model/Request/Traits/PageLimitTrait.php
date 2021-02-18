@@ -9,7 +9,7 @@
 
 namespace RetailCrm\Api\Model\Request\Traits;
 
-use RetailCrm\Api\Component\FormData\Mapping as Form;
+use Symfony\Component\Serializer\Annotation\SerializedName;
 
 /**
  * Trait PageLimitTrait
@@ -22,16 +22,14 @@ trait PageLimitTrait
     /**
      * @var int
      *
-     * @Form\Type("int")
-     * @Form\SerializedName("limit")
+     * @SerializedName("limit")
      */
     public $limit;
 
     /**
      * @var int
      *
-     * @Form\Type("int")
-     * @Form\SerializedName("page")
+     * @SerializedName("page")
      */
     public $page;
 }

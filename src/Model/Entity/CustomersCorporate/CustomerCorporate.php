@@ -10,7 +10,8 @@
 namespace RetailCrm\Api\Model\Entity\CustomersCorporate;
 
 use DateTime;
-use JMS\Serializer\Annotation as JMS;
+use RetailCrm\Api\Model\Entity\Entity;
+use Symfony\Component\Serializer\Annotation\SerializedName;
 
 /**
  * Class CustomerCorporate
@@ -18,237 +19,188 @@ use JMS\Serializer\Annotation as JMS;
  * @category CustomerCorporate
  * @package  RetailCrm\Api\Model\Entity\CustomersCorporate
  */
-class CustomerCorporate
+class CustomerCorporate implements Entity
 {
     /**
      * @var string
-     *
-     * @JMS\Type("string")
-     * @JMS\SerializedName("type")
+     * @SerializedName("type")
      */
     public $type;
 
     /**
      * @var int
-     *
-     * @JMS\Type("int")
-     * @JMS\SerializedName("id")
+     * @SerializedName("id")
      */
     public $id;
 
     /**
      * @var string
-     *
-     * @JMS\Type("string")
-     * @JMS\SerializedName("externalId")
+     * @SerializedName("externalId")
      */
     public $externalId;
 
     /**
      * @var string
-     *
-     * @JMS\Type("string")
-     * @JMS\SerializedName("nickName")
+     * @SerializedName("nickName")
      */
     public $nickName;
 
     /**
      * @var \RetailCrm\Api\Model\Entity\CustomersCorporate\EntityWithExternalIdNameOutput
      *
-     * @JMS\Type("RetailCrm\Api\Model\Entity\CustomersCorporate\EntityWithExternalIdNameOutput")
-     * @JMS\SerializedName("mainAddress")
+     * @SerializedName("mainAddress")
      */
     public $mainAddress;
 
     /**
      * @var DateTime
      *
-     * @JMS\Type("DateTime<'Y-m-d H:i:s'>")
-     * @JMS\SerializedName("createdAt")
+     * @SerializedName("createdAt")
      */
     public $createdAt;
 
     /**
      * @var int
-     *
-     * @JMS\Type("int")
-     * @JMS\SerializedName("managerId")
+     * @SerializedName("managerId")
      */
     public $managerId;
 
     /**
      * @var \RetailCrm\Api\Model\Entity\Source
      *
-     * @JMS\Type("RetailCrm\Api\Model\Entity\Source")
-     * @JMS\SerializedName("source")
+     * @SerializedName("source")
      */
     public $source;
 
     /**
      * @var \RetailCrm\Api\Model\Entity\CustomersCorporate\CustomerContact[]
      *
-     * @JMS\Type("array<RetailCrm\Api\Model\Entity\CustomersCorporate\CustomerContact>")
-     * @JMS\SerializedName("customerContacts")
+     * @SerializedName("customerContacts")
      */
     public $customerContacts;
 
     /**
      * @var \RetailCrm\Api\Model\Entity\CustomersCorporate\Company[]
      *
-     * @JMS\Type("array<RetailCrm\Api\Model\Entity\CustomersCorporate\Company>")
-     * @JMS\SerializedName("companies")
+     * @SerializedName("companies")
      */
     public $companies;
 
     /**
      * @var \RetailCrm\Api\Model\Entity\Customers\CustomerAddress[]
      *
-     * @JMS\Type("array<RetailCrm\Api\Model\Entity\Customers\CustomerAddress>")
-     * @JMS\SerializedName("addresses")
+     * @SerializedName("addresses")
      */
     public $addresses;
 
     /**
      * @var bool
-     *
-     * @JMS\Type("bool")
-     * @JMS\SerializedName("vip")
+     * @SerializedName("vip")
      */
     public $vip;
 
     /**
      * @var bool
-     *
-     * @JMS\Type("bool")
-     * @JMS\SerializedName("bad")
+     * @SerializedName("bad")
      */
     public $bad;
 
     /**
      * @var string
-     *
-     * @JMS\Type("string")
-     * @JMS\SerializedName("site")
+     * @SerializedName("site")
      */
     public $site;
 
     /**
      * @var \RetailCrm\Api\Model\Entity\Customers\CustomerTag[]
      *
-     * @JMS\Type("array<RetailCrm\Api\Model\Entity\Customers\CustomerTag>")
-     * @JMS\SerializedName("tags")
+     * @SerializedName("tags")
      */
     public $tags;
 
     /**
      * @var float
-     *
-     * @JMS\Type("float")
-     * @JMS\SerializedName("avgMarginSumm")
+     * @SerializedName("avgMarginSumm")
      */
     public $avgMarginSumm;
 
     /**
      * @var float
-     *
-     * @JMS\Type("float")
-     * @JMS\SerializedName("marginSumm")
+     * @SerializedName("marginSumm")
      */
     public $marginSumm;
 
     /**
      * @var float
-     *
-     * @JMS\Type("float")
-     * @JMS\SerializedName("totalSumm")
+     * @SerializedName("totalSumm")
      */
     public $totalSumm;
 
     /**
      * @var float
-     *
-     * @JMS\Type("float")
-     * @JMS\SerializedName("averageSumm")
+     * @SerializedName("averageSumm")
      */
     public $averageSumm;
 
     /**
      * @var int
-     *
-     * @JMS\Type("int")
-     * @JMS\SerializedName("ordersCount")
+     * @SerializedName("ordersCount")
      */
     public $ordersCount;
 
     /**
      * @var float
-     *
-     * @JMS\Type("float")
-     * @JMS\SerializedName("costSumm")
+     * @SerializedName("costSumm")
      */
     public $costSumm;
 
     /**
      * @var array<string, mixed>
-     *
-     * @JMS\Type("array")
-     * @JMS\SerializedName("customFields")
+     * @SerializedName("customFields")
      */
     public $customFields;
 
     /**
      * @var float
-     *
-     * @JMS\Type("float")
-     * @JMS\SerializedName("personalDiscount")
+     * @SerializedName("personalDiscount")
      */
     public $personalDiscount;
 
     /**
      * @var float
-     *
-     * @JMS\Type("float")
-     * @JMS\SerializedName("cumulativeDiscount")
+     * @SerializedName("cumulativeDiscount")
      */
     public $cumulativeDiscount;
 
     /**
      * @var string
-     *
-     * @JMS\Type("string")
-     * @JMS\SerializedName("discountCardNumber")
+     * @SerializedName("discountCardNumber")
      */
     public $discountCardNumber;
 
     /**
      * @var string
-     *
-     * @JMS\Type("string")
-     * @JMS\SerializedName("firstClientId")
+     * @SerializedName("firstClientId")
      */
     public $firstClientId;
 
     /**
      * @var string
-     *
-     * @JMS\Type("string")
-     * @JMS\SerializedName("lastClientId")
+     * @SerializedName("lastClientId")
      */
     public $lastClientId;
 
     /**
      * @var \RetailCrm\Api\Model\Entity\CustomersCorporate\CustomerContact
      *
-     * @JMS\Type("RetailCrm\Api\Model\Entity\CustomersCorporate\CustomerContact")
-     * @JMS\SerializedName("mainCustomerContact")
+     * @SerializedName("mainCustomerContact")
      */
     public $mainCustomerContact;
 
     /**
      * @var \RetailCrm\Api\Model\Entity\CustomersCorporate\EntityWithExternalIdNameOutput
      *
-     * @JMS\Type("RetailCrm\Api\Model\Entity\CustomersCorporate\EntityWithExternalIdNameOutput")
-     * @JMS\SerializedName("mainCompany")
+     * @SerializedName("mainCompany")
      */
     public $mainCompany;
 }

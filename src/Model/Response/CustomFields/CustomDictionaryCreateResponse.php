@@ -9,7 +9,7 @@
 
 namespace RetailCrm\Api\Model\Response\CustomFields;
 
-use JMS\Serializer\Annotation as JMS;
+use Symfony\Component\Serializer\Annotation\SerializedName;
 use RetailCrm\Api\Model\Response\SuccessResponse;
 
 /**
@@ -22,9 +22,7 @@ class CustomDictionaryCreateResponse extends SuccessResponse
 {
     /**
      * @var string
-     *
-     * @JMS\Type("string")
-     * @JMS\SerializedName("code")
+     * @SerializedName("code")
      */
     public $code;
 }

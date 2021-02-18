@@ -9,7 +9,7 @@
 
 namespace RetailCrm\Api\Model\Entity\CustomersCorporate;
 
-use JMS\Serializer\Annotation as JMS;
+use Symfony\Component\Serializer\Annotation\SerializedName;
 
 /**
  * Class EntityWithExternalIdInput
@@ -21,17 +21,13 @@ class EntityWithExternalIdInput
 {
     /**
      * @var int
-     *
-     * @JMS\Type("int")
-     * @JMS\SerializedName("id")
+     * @SerializedName("id")
      */
     public $id;
 
     /**
      * @var string
-     *
-     * @JMS\Type("string")
-     * @JMS\SerializedName("externalId")
+     * @SerializedName("externalId")
      */
     public $externalId;
 }

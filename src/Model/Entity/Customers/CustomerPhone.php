@@ -9,7 +9,7 @@
 
 namespace RetailCrm\Api\Model\Entity\Customers;
 
-use JMS\Serializer\Annotation as JMS;
+use Symfony\Component\Serializer\Annotation\SerializedName;
 
 /**
  * Class CustomerPhone
@@ -21,9 +21,7 @@ class CustomerPhone
 {
     /**
      * @var string
-     *
-     * @JMS\Type("string")
-     * @JMS\SerializedName("number")
+     * @SerializedName("number")
      */
     public $number;
 

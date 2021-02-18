@@ -9,7 +9,7 @@
 
 namespace RetailCrm\Api\Model\Request\Costs;
 
-use RetailCrm\Api\Component\FormData\Mapping as Form;
+use Symfony\Component\Serializer\Annotation\SerializedName;
 use RetailCrm\Api\Interfaces\RequestInterface;
 
 /**
@@ -23,8 +23,7 @@ class CostsDeleteRequest implements RequestInterface
     /**
      * @var int[]
      *
-     * @Form\Type("array<int>")
-     * @Form\SerializedName("ids")
+     * @SerializedName("ids")
      */
     public $ids = [];
 }

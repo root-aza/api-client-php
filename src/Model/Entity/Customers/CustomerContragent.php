@@ -10,7 +10,7 @@
 namespace RetailCrm\Api\Model\Entity\Customers;
 
 use DateTime;
-use JMS\Serializer\Annotation as JMS;
+use Symfony\Component\Serializer\Annotation\SerializedName;
 
 /**
  * Class CustomerContragent
@@ -22,121 +22,92 @@ class CustomerContragent
 {
     /**
      * @var string
-     *
-     * @JMS\Type("string")
-     * @JMS\SerializedName("contragentType")
+     * @SerializedName("contragentType")
      */
     public $contragentType;
 
     /**
      * @var string
-     *
-     * @JMS\Type("string")
-     * @JMS\SerializedName("legalName")
+     * @SerializedName("legalName")
      */
     public $legalName;
 
     /**
      * @var string
-     *
-     * @JMS\Type("string")
-     * @JMS\SerializedName("legalAddress")
+     * @SerializedName("legalAddress")
      */
     public $legalAddress;
 
     /**
      * @var string
-     *
-     * @JMS\Type("string")
-     * @JMS\SerializedName("INN")
+     * @SerializedName("INN")
      */
     public $INN;
 
     /**
      * @var string
-     *
-     * @JMS\Type("string")
-     * @JMS\SerializedName("OKPO")
+     * @SerializedName("OKPO")
      */
     public $OKPO;
 
     /**
      * @var string
-     *
-     * @JMS\Type("string")
-     * @JMS\SerializedName("KPP")
+     * @SerializedName("KPP")
      */
     public $KPP;
 
     /**
      * @var string
-     *
-     * @JMS\Type("string")
-     * @JMS\SerializedName("OGRN")
+     * @SerializedName("OGRN")
      */
     public $OGRN;
 
     /**
      * @var string
-     *
-     * @JMS\Type("string")
-     * @JMS\SerializedName("OGRNIP")
+     * @SerializedName("OGRNIP")
      */
     public $OGRNIP;
 
     /**
      * @var string
-     *
-     * @JMS\Type("string")
-     * @JMS\SerializedName("certificateNumber")
+     * @SerializedName("certificateNumber")
      */
     public $certificateNumber;
 
     /**
      * @var DateTime
      *
-     * @JMS\Type("DateTime<'Y-m-d H:i:s'>")
-     * @JMS\SerializedName("certificateDate")
+     * @SerializedName("certificateDate")
      */
     public $certificateDate;
 
     /**
      * @var string
-     *
-     * @JMS\Type("string")
-     * @JMS\SerializedName("BIK")
+     * @SerializedName("BIK")
      */
     public $BIK;
 
     /**
      * @var string
-     *
-     * @JMS\Type("string")
-     * @JMS\SerializedName("bank")
+     * @SerializedName("bank")
      */
     public $bank;
 
     /**
      * @var string
-     *
-     * @JMS\Type("string")
-     * @JMS\SerializedName("bankAddress")
+     * @SerializedName("bankAddress")
      */
     public $bankAddress;
 
     /**
      * @var string
-     *
-     * @JMS\Type("string")
-     * @JMS\SerializedName("corrAccount")
+     * @SerializedName("corrAccount")
      */
     public $corrAccount;
 
     /**
      * @var string
-     *
-     * @JMS\Type("string")
-     * @JMS\SerializedName("bankAccount")
+     * @SerializedName("bankAccount")
      */
     public $bankAccount;
 }

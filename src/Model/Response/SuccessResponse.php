@@ -9,7 +9,7 @@
 
 namespace RetailCrm\Api\Model\Response;
 
-use JMS\Serializer\Annotation as JMS;
+use Symfony\Component\Serializer\Annotation\SerializedName;
 use RetailCrm\Api\Interfaces\ResponseInterface;
 
 /**
@@ -22,9 +22,7 @@ class SuccessResponse implements ResponseInterface
 {
     /**
      * @var bool
-     *
-     * @JMS\Type("boolean")
-     * @JMS\SerializedName("success")
+     * @SerializedName("success")
      */
     public $success = true;
 }

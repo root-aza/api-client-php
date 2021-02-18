@@ -11,7 +11,6 @@ namespace RetailCrm\Api\Factory;
 
 use Doctrine\Common\Cache\Cache;
 use RetailCrm\Api\Builder\ClientBuilder;
-use RetailCrm\Api\Builder\FormEncoderBuilder;
 use RetailCrm\Api\Client;
 use RetailCrm\Api\Handler\Request\HeaderAuthenticatorHandler;
 
@@ -37,7 +36,6 @@ class ClientFactory
         return (new ClientBuilder())
             ->setApiUrl($apiUrl)
             ->setAuthenticatorHandler(new HeaderAuthenticatorHandler($apiKey))
-            ->setFormEncoder((new FormEncoderBuilder())->build())
             ->build();
     }
 
@@ -56,11 +54,7 @@ class ClientFactory
         return (new ClientBuilder())
             ->setApiUrl($apiUrl)
             ->setAuthenticatorHandler(new HeaderAuthenticatorHandler($apiKey))
-            ->setFormEncoder(
-                (new FormEncoderBuilder())
-                    ->setCache($cache)
-                    ->build()
-            )
+            ->setCache($cache)
             ->build();
     }
 
@@ -79,11 +73,7 @@ class ClientFactory
         return (new ClientBuilder())
             ->setApiUrl($apiUrl)
             ->setAuthenticatorHandler(new HeaderAuthenticatorHandler($apiKey))
-            ->setFormEncoder(
-                (new FormEncoderBuilder())
-                    ->setCacheDir($cacheDir)
-                    ->build()
-            )
+            ->setCacheDir($cacheDir)
             ->build();
     }
 }

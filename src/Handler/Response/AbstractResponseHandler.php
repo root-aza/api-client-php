@@ -9,12 +9,13 @@
 
 namespace RetailCrm\Api\Handler\Response;
 
-use JMS\Serializer\SerializerInterface;
 use Psr\Http\Message\ResponseInterface;
 use RetailCrm\Api\Component\Utils;
 use RetailCrm\Api\Handler\AbstractHandler;
 use RetailCrm\Api\Interfaces\ResponseInterface as RetailcrmResponse;
 use RetailCrm\Api\Model\ResponseData;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Symfony\Component\Serializer\SerializerInterface;
 
 /**
  * Class AbstractResponseHandler
@@ -24,15 +25,13 @@ use RetailCrm\Api\Model\ResponseData;
  */
 abstract class AbstractResponseHandler extends AbstractHandler
 {
-    /**
-     * @var \JMS\Serializer\SerializerInterface
-     */
+    /** @var \Symfony\Component\Serializer\SerializerInterface */
     private $serializer;
 
     /**
      * ResponseTransformer constructor.
      *
-     * @param \JMS\Serializer\SerializerInterface $serializer
+     * @param \Symfony\Component\Serializer\SerializerInterface $serializer
      */
     public function __construct(SerializerInterface $serializer)
     {
@@ -73,8 +72,11 @@ abstract class AbstractResponseHandler extends AbstractHandler
      */
     protected function unmarshalBody(ResponseInterface $response, string $type): RetailcrmResponse
     {
-        /** @phpstan-ignore-next-line */
-        return $this->serializer->deserialize(Utils::getBodyContents($response->getBody()), $type, 'json');
+        return $this->serializer->deserialize(
+            Utils::getBodyContents($response->getBody()),
+            $type,
+            JsonEncoder::FORMAT
+        );
     }
 
     /**

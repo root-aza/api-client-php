@@ -9,7 +9,7 @@
 
 namespace RetailCrm\Api\Model\Entity;
 
-use JMS\Serializer\Annotation as JMS;
+use Symfony\Component\Serializer\Annotation\SerializedName;
 
 /**
  * Class Source
@@ -21,41 +21,31 @@ class Source
 {
     /**
      * @var string
-     *
-     * @JMS\Type("string")
-     * @JMS\SerializedName("source")
+     * @SerializedName("source")
      */
     public $source;
 
     /**
      * @var string
-     *
-     * @JMS\Type("string")
-     * @JMS\SerializedName("medium")
+     * @SerializedName("medium")
      */
     public $medium;
 
     /**
      * @var string
-     *
-     * @JMS\Type("string")
-     * @JMS\SerializedName("campaign")
+     * @SerializedName("campaign")
      */
     public $campaign;
 
     /**
      * @var string
-     *
-     * @JMS\Type("string")
-     * @JMS\SerializedName("keyword")
+     * @SerializedName("keyword")
      */
     public $keyword;
 
     /**
      * @var string
-     *
-     * @JMS\Type("string")
-     * @JMS\SerializedName("content")
+     * @SerializedName("content")
      */
     public $content;
 }

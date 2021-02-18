@@ -12,8 +12,8 @@ namespace RetailCrm\Api\Factory;
 use Http\Discovery\Psr17FactoryDiscovery;
 use RetailCrm\Api\Handler\Request\ModelDataHandler;
 use RetailCrm\Api\Handler\Request\PsrRequestHandler;
-use RetailCrm\Api\Interfaces\FormEncoderInterface;
 use RetailCrm\Api\Interfaces\HandlerInterface;
+use Symfony\Component\Serializer\SerializerInterface;
 
 /**
  * Class RequestPipelineFactory
@@ -24,16 +24,16 @@ use RetailCrm\Api\Interfaces\HandlerInterface;
 class RequestPipelineFactory
 {
     /**
-     * Instantiates default request pipeline with provided FormEncoder.
+     * Instantiates default request pipeline with provided FormDataEncoder.
      * You still need to append your own authenticator handler. Otherwise your requests won't work.
      *
-     * @param \RetailCrm\Api\Interfaces\FormEncoderInterface $formEncoder
-     * @param \RetailCrm\Api\Interfaces\HandlerInterface     ...$additionalHandlers
+     * @param \Symfony\Component\Serializer\SerializerInterface $serializer
+     * @param \RetailCrm\Api\Interfaces\HandlerInterface        ...$additionalHandlers
      *
      * @return \RetailCrm\Api\Interfaces\HandlerInterface
      */
     public static function createDefaultPipeline(
-        FormEncoderInterface $formEncoder,
+        SerializerInterface $serializer,
         HandlerInterface ...$additionalHandlers
     ): HandlerInterface {
         $handler = new PsrRequestHandler(
@@ -41,7 +41,7 @@ class RequestPipelineFactory
             Psr17FactoryDiscovery::findRequestFactory()
         );
         $nextHandler = $handler->setNext(
-            new ModelDataHandler($formEncoder, Psr17FactoryDiscovery::findStreamFactory())
+            new ModelDataHandler($serializer, Psr17FactoryDiscovery::findStreamFactory())
         );
 
         if (count($additionalHandlers) > 0) {

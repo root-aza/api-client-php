@@ -7,9 +7,9 @@
  * @package  RetailCrm\Api\Enum\Customers
  */
 
-namespace RetailCrm\Api\Enum\Customers;
+namespace RetailCrm\Api\Model\Entity\Customers;
 
-use RetailCrm\Api\Component\FormData\Mapping as Form;
+use Symfony\Component\Serializer\Annotation\SerializedName;
 
 /**
  * Class SerializedCustomerReference
@@ -22,8 +22,7 @@ class SerializedCustomerReference
     /**
      * @var int
      *
-     * @Form\Type("int")
-     * @Form\SerializedName("id")
+     * @SerializedName("id")
      */
     public $id;
 

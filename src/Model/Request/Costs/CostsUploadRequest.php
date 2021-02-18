@@ -9,7 +9,7 @@
 
 namespace RetailCrm\Api\Model\Request\Costs;
 
-use RetailCrm\Api\Component\FormData\Mapping as Form;
+use Symfony\Component\Serializer\Annotation\SerializedName;
 use RetailCrm\Api\Interfaces\RequestInterface;
 
 /**
@@ -23,8 +23,7 @@ class CostsUploadRequest implements RequestInterface
     /**
      * @var \RetailCrm\Api\Model\Entity\Costs\Cost[]
      *
-     * @Form\Type("array<RetailCrm\Api\Model\Entity\Costs\Cost>")
-     * @Form\SerializedName("costs")
+     * @SerializedName("costs")
      */
     public $costs;
 }

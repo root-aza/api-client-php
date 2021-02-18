@@ -10,7 +10,7 @@
 namespace RetailCrm\Api\Model\Entity\Customers;
 
 use DateTime;
-use JMS\Serializer\Annotation as JMS;
+use Symfony\Component\Serializer\Annotation\SerializedName;
 
 /**
  * Class Segment
@@ -22,57 +22,44 @@ class Segment
 {
     /**
      * @var int
-     *
-     * @JMS\Type("int")
-     * @JMS\SerializedName("id")
+     * @SerializedName("id")
      */
     public $id;
 
     /**
      * @var string
-     *
-     * @JMS\Type("string")
-     * @JMS\SerializedName("code")
+     * @SerializedName("code")
      */
     public $code;
 
     /**
      * @var string
-     *
-     * @JMS\Type("string")
-     * @JMS\SerializedName("name")
+     * @SerializedName("name")
      */
     public $name;
 
     /**
      * @var DateTime
      *
-     * @JMS\Type("DateTime<'Y-m-d H:i:s'>")
-     * @JMS\SerializedName("createdAt")
+     * @SerializedName("createdAt")
      */
     public $createdAt;
 
     /**
      * @var bool
-     *
-     * @JMS\Type("bool")
-     * @JMS\SerializedName("isDynamic")
+     * @SerializedName("isDynamic")
      */
     public $isDynamic;
 
     /**
      * @var int
-     *
-     * @JMS\Type("int")
-     * @JMS\SerializedName("customersCount")
+     * @SerializedName("customersCount")
      */
     public $customersCount;
 
     /**
      * @var bool
-     *
-     * @JMS\Type("bool")
-     * @JMS\SerializedName("active")
+     * @SerializedName("active")
      */
     public $active;
 }

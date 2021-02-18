@@ -9,7 +9,7 @@
 
 namespace RetailCrm\Api\Model\Request\CustomersCorporate;
 
-use RetailCrm\Api\Component\FormData\Mapping as Form;
+use Symfony\Component\Serializer\Annotation\SerializedName;
 use RetailCrm\Api\Interfaces\RequestInterface;
 
 /**
@@ -23,17 +23,14 @@ class CustomersCorporateCreateRequest implements RequestInterface
     /**
      * @var string
      *
-     * @Form\Type("string")
-     * @Form\SerializedName("site")
+     * @SerializedName("site")
      */
     public $site;
 
     /**
      * @var \RetailCrm\Api\Model\Entity\CustomersCorporate\CustomerCorporate
      *
-     * @Form\Type("RetailCrm\Api\Model\Entity\Customers\CustomerCorporate")
-     * @Form\SerializedName("customerCorporate")
-     * @Form\JsonField()
+     * @SerializedName("customerCorporate")
      */
     public $customerCorporate;
 }

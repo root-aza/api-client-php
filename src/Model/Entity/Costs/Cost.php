@@ -10,7 +10,8 @@
 namespace RetailCrm\Api\Model\Entity\Costs;
 
 use DateTime;
-use JMS\Serializer\Annotation as JMS;
+use RetailCrm\Api\Model\Entity\Entity;
+use Symfony\Component\Serializer\Annotation\SerializedName;
 
 /**
  * Class Cost
@@ -18,101 +19,108 @@ use JMS\Serializer\Annotation as JMS;
  * @category Cost
  * @package  RetailCrm\Api\Model\Entity\Costs
  */
-class Cost
+class Cost implements Entity
 {
     /**
      * @var \RetailCrm\Api\Model\Entity\Source
      *
-     * @JMS\Type("RetailCrm\Api\Model\Entity\Source")
-     * @JMS\SerializedName("source")
+     * @SerializedName("source")
      */
     public $source;
 
     /**
      * @var int
-     *
-     * @JMS\Type("int")
-     * @JMS\SerializedName("id")
+     * @SerializedName("id")
      */
     public $id;
 
     /**
      * @var DateTime
      *
-     * @JMS\Type("DateTime<'Y-m-d'>")
-     * @JMS\SerializedName("dateFrom")
+     * //Type("DateTime<'Y-m-d'>")
+     * @SerializedName("dateFrom")
      */
     public $dateFrom;
 
     /**
      * @var DateTime
      *
-     * @JMS\Type("DateTime<'Y-m-d'>")
-     * @JMS\SerializedName("dateTo")
+     * //Type("DateTime<'Y-m-d'>")
+     * @SerializedName("dateTo")
      */
     public $dateTo;
 
     /**
      * @var float
-     *
-     * @JMS\Type("float")
-     * @JMS\SerializedName("summ")
+     * @SerializedName("summ")
      */
     public $summ;
 
     /**
      * @var string
-     *
-     * @JMS\Type("string")
-     * @JMS\SerializedName("costItem")
+     * @SerializedName("costItem")
      */
     public $costItem;
 
     /**
      * @var string
-     *
-     * @JMS\Type("string")
-     * @JMS\SerializedName("comment")
+     * @SerializedName("comment")
      */
     public $comment;
 
     /**
      * @var DateTime
      *
-     * @JMS\Type("DateTime<'Y-m-d H:i:s'>")
-     * @JMS\SerializedName("createdAt")
+     * @SerializedName("createdAt")
      */
     public $createdAt;
 
     /**
      * @var string
-     *
-     * @JMS\Type("string")
-     * @JMS\SerializedName("createdBy")
+     * @SerializedName("createdBy")
      */
     public $createdBy;
 
     /**
      * @var \RetailCrm\Api\Model\Entity\Costs\CostOrder
      *
-     * @JMS\Type("RetailCrm\Api\Model\Entity\Costs\CostOrder")
-     * @JMS\SerializedName("order")
+     * @SerializedName("order")
      */
     public $order;
 
     /**
      * @var int
-     *
-     * @JMS\Type("int")
-     * @JMS\SerializedName("userId")
+     * @SerializedName("userId")
      */
     public $userId;
 
     /**
      * @var string[]
-     *
-     * @JMS\Type("array<string>")
-     * @JMS\SerializedName("sites")
+     * @SerializedName("sites")
      */
     public $sites;
+
+    /**
+     * @return string
+     */
+    public function getDateFrom(): string
+    {
+        if (null === $this->dateFrom) {
+            return null;
+        }
+
+        return $this->dateFrom->format('Y-m-d');
+    }
+
+    /**
+     * @return string
+     */
+    public function getDateTo(): string
+    {
+        if (null === $this->dateTo) {
+            return null;
+        }
+
+        return $this->dateTo->format('Y-m-d');
+    }
 }

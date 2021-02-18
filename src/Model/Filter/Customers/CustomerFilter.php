@@ -9,7 +9,7 @@
 
 namespace RetailCrm\Api\Model\Filter\Customers;
 
-use RetailCrm\Api\Component\FormData\Mapping as Form;
+use Symfony\Component\Serializer\Annotation\SerializedName;
 
 /**
  * Class CustomerFilter
@@ -26,480 +26,420 @@ class CustomerFilter
     /**
      * @var string
      *
-     * @Form\Type("string")
-     * @Form\SerializedName("isContact")
+     * @SerializedName("isContact")
      */
     public $isContact;
 
     /**
      * @var string
      *
-     * @Form\Type("string")
-     * @Form\SerializedName("online")
+     * @SerializedName("online")
      */
     public $online;
 
     /**
      * @var string
      *
-     * @Form\Type("string")
-     * @Form\SerializedName("sex")
+     * @SerializedName("sex")
      */
     public $sex;
 
     /**
      * @var int
      *
-     * @Form\Type("int")
-     * @Form\SerializedName("emailMarketingUnsubscribed")
+     * @SerializedName("emailMarketingUnsubscribed")
      */
     public $emailMarketingUnsubscribed;
 
     /**
      * @var string[]
      *
-     * @Form\Type("string[]")
-     * @Form\SerializedName("countries")
+     * @SerializedName("countries")
      */
     public $countries;
 
     /**
      * @var string
      *
-     * @Form\Type("string")
-     * @Form\SerializedName("contragentName")
+     * @SerializedName("contragentName")
      */
     public $contragentName;
 
     /**
      * @var string[]
      *
-     * @Form\Type("string[]")
-     * @Form\SerializedName("contragentTypes")
+     * @SerializedName("contragentTypes")
      */
     public $contragentTypes;
 
     /**
      * @var string
      *
-     * @Form\Type("string")
-     * @Form\SerializedName("contragentInn")
+     * @SerializedName("contragentInn")
      */
     public $contragentInn;
 
     /**
      * @var string
      *
-     * @Form\Type("string")
-     * @Form\SerializedName("contragentKpp")
+     * @SerializedName("contragentKpp")
      */
     public $contragentKpp;
 
     /**
      * @var string
      *
-     * @Form\Type("string")
-     * @Form\SerializedName("contragentBik")
+     * @SerializedName("contragentBik")
      */
     public $contragentBik;
 
     /**
      * @var string
      *
-     * @Form\Type("string")
-     * @Form\SerializedName("contragentCorrAccount")
+     * @SerializedName("contragentCorrAccount")
      */
     public $contragentCorrAccount;
 
     /**
      * @var string
      *
-     * @Form\Type("string")
-     * @Form\SerializedName("contragentBankAccount")
+     * @SerializedName("contragentBankAccount")
      */
     public $contragentBankAccount;
 
     /**
      * @var string[]
      *
-     * @Form\Type("string[]")
-     * @Form\SerializedName("externalIds")
+     * @SerializedName("externalIds")
      */
     public $externalIds;
 
     /**
      * @var string
      *
-     * @Form\Type("string")
-     * @Form\SerializedName("name")
+     * @SerializedName("name")
      */
     public $name;
 
     /**
      * @var string
      *
-     * @Form\Type("string")
-     * @Form\SerializedName("city")
+     * @SerializedName("city")
      */
     public $city;
 
     /**
      * @var string
      *
-     * @Form\Type("string")
-     * @Form\SerializedName("region")
+     * @SerializedName("region")
      */
     public $region;
 
     /**
      * @var string
      *
-     * @Form\Type("string")
-     * @Form\SerializedName("email")
+     * @SerializedName("email")
      */
     public $email;
 
     /**
      * @var string
      *
-     * @Form\Type("string")
-     * @Form\SerializedName("notes")
+     * @SerializedName("notes")
      */
     public $notes;
 
     /**
      * @var string
      *
-     * @Form\Type("string")
-     * @Form\SerializedName("minOrdersCount")
+     * @SerializedName("minOrdersCount")
      */
     public $minOrdersCount;
 
     /**
      * @var string
      *
-     * @Form\Type("string")
-     * @Form\SerializedName("maxOrdersCount")
+     * @SerializedName("maxOrdersCount")
      */
     public $maxOrdersCount;
 
     /**
      * @var string
      *
-     * @Form\Type("string")
-     * @Form\SerializedName("minAverageSumm")
+     * @SerializedName("minAverageSumm")
      */
     public $minAverageSumm;
 
     /**
      * @var string
      *
-     * @Form\Type("string")
-     * @Form\SerializedName("maxAverageSumm")
+     * @SerializedName("maxAverageSumm")
      */
     public $maxAverageSumm;
 
     /**
      * @var string
      *
-     * @Form\Type("string")
-     * @Form\SerializedName("minTotalSumm")
+     * @SerializedName("minTotalSumm")
      */
     public $minTotalSumm;
 
     /**
      * @var string
      *
-     * @Form\Type("string")
-     * @Form\SerializedName("maxTotalSumm")
+     * @SerializedName("maxTotalSumm")
      */
     public $maxTotalSumm;
 
     /**
      * @var string
      *
-     * @Form\Type("string")
-     * @Form\SerializedName("classSegment")
+     * @SerializedName("classSegment")
      */
     public $classSegment;
 
     /**
      * @var string
      *
-     * @Form\Type("string")
-     * @Form\SerializedName("discountCardNumber")
+     * @SerializedName("discountCardNumber")
      */
     public $discountCardNumber;
 
     /**
      * @var string
      *
-     * @Form\Type("string")
-     * @Form\SerializedName("attachments")
+     * @SerializedName("attachments")
      */
     public $attachments;
 
     /**
      * @var string
      *
-     * @Form\Type("string")
-     * @Form\SerializedName("minCostSumm")
+     * @SerializedName("minCostSumm")
      */
     public $minCostSumm;
 
     /**
      * @var string
      *
-     * @Form\Type("string")
-     * @Form\SerializedName("maxCostSumm")
+     * @SerializedName("maxCostSumm")
      */
     public $maxCostSumm;
 
     /**
      * @var string
      *
-     * @Form\Type("string")
-     * @Form\SerializedName("vip")
+     * @SerializedName("vip")
      */
     public $vip;
 
     /**
      * @var string
      *
-     * @Form\Type("string")
-     * @Form\SerializedName("bad")
+     * @SerializedName("bad")
      */
     public $bad;
 
     /**
      * @var string
      *
-     * @Form\Type("string")
-     * @Form\SerializedName("tasksCounts")
+     * @SerializedName("tasksCounts")
      */
     public $tasksCounts;
 
     /**
      * @var int[]
      *
-     * @Form\Type("int[]")
-     * @Form\SerializedName("ids")
+     * @SerializedName("ids")
      */
     public $ids;
 
     /**
      * @var string
      *
-     * @Form\Type("string")
-     * @Form\SerializedName("segment")
+     * @SerializedName("segment")
      */
     public $segment;
 
     /**
      * @var int[]
      *
-     * @Form\Type("int[]")
-     * @Form\SerializedName("mgChannels")
+     * @SerializedName("mgChannels")
      */
     public $mgChannels;
 
     /**
      * @var string[]
      *
-     * @Form\Type("string[]")
-     * @Form\SerializedName("sites")
+     * @SerializedName("sites")
      */
     public $sites;
 
     /**
      * @var int[]
      *
-     * @Form\Type("int[]")
-     * @Form\SerializedName("managers")
+     * @SerializedName("managers")
      */
     public $managers;
 
     /**
      * @var string[]
      *
-     * @Form\Type("string[]")
-     * @Form\SerializedName("managerGroups")
+     * @SerializedName("managerGroups")
      */
     public $managerGroups;
 
     /**
      * @var string
      *
-     * @Form\Type("string")
-     * @Form\SerializedName("firstWebVisitFrom")
+     * @SerializedName("firstWebVisitFrom")
      */
     public $firstWebVisitFrom;
 
     /**
      * @var string
      *
-     * @Form\Type("string")
-     * @Form\SerializedName("firstWebVisitTo")
+     * @SerializedName("firstWebVisitTo")
      */
     public $firstWebVisitTo;
 
     /**
      * @var string
      *
-     * @Form\Type("string")
-     * @Form\SerializedName("lastWebVisitFrom")
+     * @SerializedName("lastWebVisitFrom")
      */
     public $lastWebVisitFrom;
 
     /**
      * @var string
      *
-     * @Form\Type("string")
-     * @Form\SerializedName("lastWebVisitTo")
+     * @SerializedName("lastWebVisitTo")
      */
     public $lastWebVisitTo;
 
     /**
      * @var string
      *
-     * @Form\Type("string")
-     * @Form\SerializedName("dateFrom")
+     * @SerializedName("dateFrom")
      */
     public $dateFrom;
 
     /**
      * @var string
      *
-     * @Form\Type("string")
-     * @Form\SerializedName("dateTo")
+     * @SerializedName("dateTo")
      */
     public $dateTo;
 
     /**
      * @var string
      *
-     * @Form\Type("string")
-     * @Form\SerializedName("firstOrderFrom")
+     * @SerializedName("firstOrderFrom")
      */
     public $firstOrderFrom;
 
     /**
      * @var string
      *
-     * @Form\Type("string")
-     * @Form\SerializedName("firstOrderTo")
+     * @SerializedName("firstOrderTo")
      */
     public $firstOrderTo;
 
     /**
      * @var string
      *
-     * @Form\Type("string")
-     * @Form\SerializedName("lastOrderFrom")
+     * @SerializedName("lastOrderFrom")
      */
     public $lastOrderFrom;
 
     /**
      * @var string
      *
-     * @Form\Type("string")
-     * @Form\SerializedName("lastOrderTo")
+     * @SerializedName("lastOrderTo")
      */
     public $lastOrderTo;
 
     /**
      * @var array<string, mixed>
      *
-     * @Form\Type("array")
-     * @Form\SerializedName("customFields")
+     * @SerializedName("customFields")
      */
     public $customFields;
 
     /**
      * @var string
      *
-     * @Form\Type("string")
-     * @Form\SerializedName("browserId")
+     * @SerializedName("browserId")
      */
     public $browserId;
 
     /**
      * @var string
      *
-     * @Form\Type("string")
-     * @Form\SerializedName("commentary")
+     * @SerializedName("commentary")
      */
     public $commentary;
 
     /**
      * @var string
      *
-     * @Form\Type("string")
-     * @Form\SerializedName("sourceName")
+     * @SerializedName("sourceName")
      */
     public $sourceName;
 
     /**
      * @var string
      *
-     * @Form\Type("string")
-     * @Form\SerializedName("mediumName")
+     * @SerializedName("mediumName")
      */
     public $mediumName;
 
     /**
      * @var string
      *
-     * @Form\Type("string")
-     * @Form\SerializedName("campaignName")
+     * @SerializedName("campaignName")
      */
     public $campaignName;
 
     /**
      * @var string
      *
-     * @Form\Type("string")
-     * @Form\SerializedName("keywordName")
+     * @SerializedName("keywordName")
      */
     public $keywordName;
 
     /**
      * @var string
      *
-     * @Form\Type("string")
-     * @Form\SerializedName("adContentName")
+     * @SerializedName("adContentName")
      */
     public $adContentName;
 
     /**
      * @var string
      *
-     * @Form\Type("string")
-     * @Form\SerializedName("mgCustomerId")
+     * @SerializedName("mgCustomerId")
      */
     public $mgCustomerId;
 
     /**
      * @var string[]
      *
-     * @Form\Type("string[]")
-     * @Form\SerializedName("tags")
+     * @SerializedName("tags")
      */
     public $tags;
 
     /**
      * @var string[]
      *
-     * @Form\Type("string[]")
-     * @Form\SerializedName("attachedTags")
+     * @SerializedName("attachedTags")
      */
     public $attachedTags;
 
     /**
      * @var string
      *
-     * @Form\Type("string")
-     * @Form\SerializedName("mgCustomerIds")
+     * @SerializedName("mgCustomerIds")
      */
     public $mgCustomerIds;
 }

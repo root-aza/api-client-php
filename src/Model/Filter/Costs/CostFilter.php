@@ -9,7 +9,7 @@
 
 namespace RetailCrm\Api\Model\Filter\Costs;
 
-use RetailCrm\Api\Component\FormData\Mapping as Form;
+use Symfony\Component\Serializer\Annotation\SerializedName;
 
 /**
  * Class CostFilter
@@ -22,128 +22,112 @@ class CostFilter
     /**
      * @var string
      *
-     * @Form\Type("string")
-     * @Form\SerializedName("minSumm")
+     * @SerializedName("minSumm")
      */
     public $minSumm;
 
     /**
      * @var string
      *
-     * @Form\Type("string")
-     * @Form\SerializedName("maxSumm")
+     * @SerializedName("maxSumm")
      */
     public $maxSumm;
 
     /**
      * @var string
      *
-     * @Form\Type("string")
-     * @Form\SerializedName("orderNumber")
+     * @SerializedName("orderNumber")
      */
     public $orderNumber;
 
     /**
      * @var string
      *
-     * @Form\Type("string")
-     * @Form\SerializedName("comment")
+     * @SerializedName("comment")
      */
     public $comment;
 
     /**
      * @var int[]
      *
-     * @Form\Type("int[]")
-     * @Form\SerializedName("ids")
+     * @SerializedName("ids")
      */
     public $ids;
 
     /**
      * @var string[]
      *
-     * @Form\Type("string[]")
-     * @Form\SerializedName("sites")
+     * @SerializedName("sites")
      */
     public $sites;
 
     /**
      * @var int[]
      *
-     * @Form\Type("int[]")
-     * @Form\SerializedName("createdBy")
+     * @SerializedName("createdBy")
      */
     public $createdBy;
 
     /**
      * @var string[]
      *
-     * @Form\Type("string[]")
-     * @Form\SerializedName("costGroups")
+     * @SerializedName("costGroups")
      */
     public $costGroups;
 
     /**
      * @var string[]
      *
-     * @Form\Type("string[]")
-     * @Form\SerializedName("costItems")
+     * @SerializedName("costItems")
      */
     public $costItems;
 
     /**
      * @var int[]
      *
-     * @Form\Type("int[]")
-     * @Form\SerializedName("users")
+     * @SerializedName("users")
      */
     public $users;
 
     /**
      * @var string[]
      *
-     * @Form\Type("string[]")
-     * @Form\SerializedName("dateFrom")
+     * @SerializedName("dateFrom")
      */
     public $dateFrom;
 
     /**
      * @var string[]
      *
-     * @Form\Type("string[]")
-     * @Form\SerializedName("dateTo")
+     * @SerializedName("dateTo")
      */
     public $dateTo;
 
     /**
      * @var string[]
      *
-     * @Form\Type("string[]")
-     * @Form\SerializedName("createdAtFrom")
+     * @SerializedName("createdAtFrom")
      */
     public $createdAtFrom;
 
     /**
      * @var string[]
      *
-     * @Form\Type("string[]")
-     * @Form\SerializedName("createdAtTo")
+     * @SerializedName("createdAtTo")
      */
     public $createdAtTo;
 
     /**
      * @var int[]
      *
-     * @Form\Type("int[]")
-     * @Form\SerializedName("orderIds")
+     * @SerializedName("orderIds")
      */
     public $orderIds;
 
     /**
      * @var string[]
      *
-     * @Form\Type("string[]")
-     * @Form\SerializedName("orderExternalIds")
+     * @SerializedName("orderExternalIds")
      */
     public $orderExternalIds;
 }

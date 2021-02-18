@@ -9,7 +9,7 @@
 
 namespace RetailCrm\Api\Model\Request\CustomFields;
 
-use RetailCrm\Api\Component\FormData\Mapping as Form;
+use Symfony\Component\Serializer\Annotation\SerializedName;
 use RetailCrm\Api\Interfaces\RequestInterface;
 
 /**
@@ -23,9 +23,7 @@ class CustomDictionaryCreateRequest implements RequestInterface
     /**
      * @var \RetailCrm\Api\Model\Entity\CustomFields\CustomDictionary
      *
-     * @Form\Type("RetailCrm\Api\Model\Entity\CustomFields\CustomDictionary")
-     * @Form\SerializedName("customDictionary")
-     * @Form\JsonField()
+     * @SerializedName("customDictionary")
      */
     public $customDictionary;
 }

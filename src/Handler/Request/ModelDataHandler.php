@@ -10,12 +10,11 @@
 namespace RetailCrm\Api\Handler\Request;
 
 use Psr\Http\Message\StreamFactoryInterface;
-use ReflectionException;
+use RetailCrm\Api\Component\Serializer\Encoder\FormDataEncoder;
 use RetailCrm\Api\Enum\RequestMethod;
-use RetailCrm\Api\Exception\HandlerException;
 use RetailCrm\Api\Handler\AbstractHandler;
-use RetailCrm\Api\Interfaces\FormEncoderInterface;
 use RetailCrm\Api\Model\RequestData;
+use Symfony\Component\Serializer\SerializerInterface;
 
 /**
  * Class ModelDataHandler
@@ -31,19 +30,19 @@ class ModelDataHandler extends AbstractHandler
     private $streamFactory;
 
     /**
-     * @var \RetailCrm\Api\Interfaces\FormEncoderInterface
+     * @var SerializerInterface
      */
-    private $formEncoder;
+    private $serializer;
 
     /**
      * ModelDataHandler constructor.
      *
-     * @param \RetailCrm\Api\Interfaces\FormEncoderInterface $formEncoder
-     * @param \Psr\Http\Message\StreamFactoryInterface       $streamFactory
+     * @param \Symfony\Component\Serializer\SerializerInterface $serializer
+     * @param \Psr\Http\Message\StreamFactoryInterface          $streamFactory
      */
-    public function __construct(FormEncoderInterface $formEncoder, StreamFactoryInterface $streamFactory)
+    public function __construct(SerializerInterface $serializer, StreamFactoryInterface $streamFactory)
     {
-        $this->formEncoder = $formEncoder;
+        $this->serializer = $serializer;
         $this->streamFactory = $streamFactory;
     }
 
@@ -60,15 +59,7 @@ class ModelDataHandler extends AbstractHandler
     public function handle($item)
     {
         if ($item instanceof RequestData && null !== $item->requestModel && null !== $item->request) {
-            try {
-                $formData = $this->formEncoder->encode($item->requestModel);
-            } catch (ReflectionException $exception) {
-                throw new HandlerException(
-                    sprintf('Cannot marshal request into form-data: %s', $exception->getMessage()),
-                    0,
-                    $exception
-                );
-            }
+            $formData = $this->serializer->serialize($item->requestModel, FormDataEncoder::FORMAT);
 
             if (in_array(strtoupper($item->request->getMethod()), [RequestMethod::GET, RequestMethod::DELETE], true)) {
                 $item->request = $item->request->withUri(

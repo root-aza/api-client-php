@@ -10,7 +10,7 @@
 namespace RetailCrm\Api\Model\Entity\Customers;
 
 use DateTime;
-use JMS\Serializer\Annotation as JMS;
+use Symfony\Component\Serializer\Annotation\SerializedName;
 
 /**
  * Class CustomerHistory
@@ -22,105 +22,85 @@ class CustomerHistory
 {
     /**
      * @var int
-     *
-     * @JMS\Type("int")
-     * @JMS\SerializedName("id")
+     * @SerializedName("id")
      */
     public $id;
 
     /**
      * @var DateTime
      *
-     * @JMS\Type("DateTime<'Y-m-d H:i:s'>")
-     * @JMS\SerializedName("createdAt")
+     * @SerializedName("createdAt")
      */
     public $createdAt;
 
     /**
      * @var bool
-     *
-     * @JMS\Type("bool")
-     * @JMS\SerializedName("created")
+     * @SerializedName("created")
      */
     public $created;
 
     /**
      * @var bool
-     *
-     * @JMS\Type("bool")
-     * @JMS\SerializedName("deleted")
+     * @SerializedName("deleted")
      */
     public $deleted;
 
     /**
      * @var string
-     *
-     * @JMS\Type("string")
-     * @JMS\SerializedName("source")
+     * @SerializedName("source")
      */
     public $source;
 
     /**
      * @var \RetailCrm\Api\Model\Entity\HistoryUser
      *
-     * @JMS\Type("RetailCrm\Api\Model\Entity\HistoryUser")
-     * @JMS\SerializedName("user")
+     * @SerializedName("user")
      */
     public $user;
 
     /**
      * @var string
-     *
-     * @JMS\Type("string")
-     * @JMS\SerializedName("field")
+     * @SerializedName("field")
      */
     public $field;
 
     /**
      * @var mixed
-     *
-     * @JMS\Type("mixed")
-     * @JMS\SerializedName("oldValue")
+     * @SerializedName("oldValue")
      */
     public $oldValue;
 
     /**
      * @var mixed
-     *
-     * @JMS\Type("mixed")
-     * @JMS\SerializedName("newValue")
+     * @SerializedName("newValue")
      */
     public $newValue;
 
     /**
      * @var \RetailCrm\Api\Model\Entity\HistoryApiKey
      *
-     * @JMS\Type("RetailCrm\Api\Model\Entity\HistoryApiKey")
-     * @JMS\SerializedName("apiKey")
+     * @SerializedName("apiKey")
      */
     public $apiKey;
 
     /**
      * @var \RetailCrm\Api\Model\Entity\Customers\Customer
      *
-     * @JMS\Type("RetailCrm\Api\Model\Entity\Customers\Customer")
-     * @JMS\SerializedName("customer")
+     * @SerializedName("customer")
      */
     public $customer;
 
     /**
      * @var \RetailCrm\Api\Model\Entity\Customers\HistoryAddress
      *
-     * @JMS\Type("RetailCrm\Api\Model\Entity\Customers\HistoryAddress")
-     * @JMS\SerializedName("address")
+     * @SerializedName("address")
      */
     public $address;
 
     /**
      * @var \RetailCrm\Api\Model\Entity\Customers\Customer
      *
-     * @JMS\Type("RetailCrm\Api\Model\Entity\Customers\Customer")
-     * @JMS\SerializedName("combinedTo")
+     * @SerializedName("combinedTo")
      */
     public $combinedTo;
 }

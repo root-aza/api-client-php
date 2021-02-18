@@ -9,7 +9,7 @@
 
 namespace RetailCrm\Api\Model\Request\CustomersCorporate;
 
-use RetailCrm\Api\Component\FormData\Mapping as Form;
+use Symfony\Component\Serializer\Annotation\SerializedName;
 use RetailCrm\Api\Interfaces\RequestInterface;
 use RetailCrm\Api\Model\Request\Traits\PageLimitTrait;
 
@@ -26,8 +26,7 @@ class CustomersCorporateRequest implements RequestInterface
     /**
      * @var \RetailCrm\Api\Model\Filter\CustomersCorporate\CustomerCorporateFilter
      *
-     * @Form\Type("RetailCrm\Api\Model\Filter\CustomersCorporate\CustomerCorporateFilter")
-     * @Form\SerializedName("filter")
+     * @SerializedName("filter")
      */
     public $filter;
 }

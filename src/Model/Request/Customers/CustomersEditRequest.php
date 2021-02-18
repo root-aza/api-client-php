@@ -9,7 +9,7 @@
 
 namespace RetailCrm\Api\Model\Request\Customers;
 
-use RetailCrm\Api\Component\FormData\Mapping as Form;
+use Symfony\Component\Serializer\Annotation\SerializedName;
 
 /**
  * Class CustomersEditRequest
@@ -22,8 +22,7 @@ class CustomersEditRequest extends CustomersCreateRequest
     /**
      * @var string
      *
-     * @Form\Type("string")
-     * @Form\SerializedName("by")
+     * @SerializedName("by")
      */
     public $by;
 }

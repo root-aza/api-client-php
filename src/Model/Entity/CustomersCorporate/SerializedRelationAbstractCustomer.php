@@ -9,7 +9,7 @@
 
 namespace RetailCrm\Api\Model\Entity\CustomersCorporate;
 
-use JMS\Serializer\Annotation as JMS;
+use Symfony\Component\Serializer\Annotation\SerializedName;
 
 /**
  * Class SerializedRelationAbstractCustomer
@@ -21,41 +21,32 @@ class SerializedRelationAbstractCustomer
 {
     /**
      * @var int
-     *
-     * @JMS\Type("int")
-     * @JMS\SerializedName("id")
+     * @SerializedName("id")
      */
     public $id;
 
     /**
      * @var string
-     *
-     * @JMS\Type("string")
-     * @JMS\SerializedName("externalId")
+     * @SerializedName("externalId")
      */
     public $externalId;
 
     /**
      * @var string
-     *
-     * @JMS\Type("string")
-     * @JMS\SerializedName("browserId")
+     * @SerializedName("browserId")
      */
     public $browserId;
 
     /**
      * @var string
-     *
-     * @JMS\Type("string")
-     * @JMS\SerializedName("site")
+     * @SerializedName("site")
      */
     public $site;
 
     /**
      * @var \RetailCrm\Api\Model\Entity\CustomersCorporate\CustomerContactCompany[]
      *
-     * @JMS\Type("array<RetailCrm\Api\Model\Entity\CustomersCorporate\CustomerContactCompany>")
-     * @JMS\SerializedName("companies")
+     * @SerializedName("companies")
      */
     public $companies;
 }

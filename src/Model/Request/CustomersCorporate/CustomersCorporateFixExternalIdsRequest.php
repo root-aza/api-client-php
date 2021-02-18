@@ -9,7 +9,7 @@
 
 namespace RetailCrm\Api\Model\Request\CustomersCorporate;
 
-use RetailCrm\Api\Component\FormData\Mapping as Form;
+use Symfony\Component\Serializer\Annotation\SerializedName;
 use RetailCrm\Api\Interfaces\RequestInterface;
 
 /**
@@ -23,9 +23,7 @@ class CustomersCorporateFixExternalIdsRequest implements RequestInterface
     /**
      * @var \RetailCrm\Api\Model\Entity\Customers\FixExternalRow[]
      *
-     * @Form\Type("array<RetailCrm\Api\Model\Entity\Customers\FixExternalRow>")
-     * @Form\SerializedName("customersCorporate")
-     * @Form\JsonField()
+     * @SerializedName("customersCorporate")
      */
     public $customersCorporate;
 }

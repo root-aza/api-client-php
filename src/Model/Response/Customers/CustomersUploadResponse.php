@@ -9,7 +9,7 @@
 
 namespace RetailCrm\Api\Model\Response\Customers;
 
-use JMS\Serializer\Annotation as JMS;
+use Symfony\Component\Serializer\Annotation\SerializedName;
 use RetailCrm\Api\Model\Response\SuccessResponse;
 
 /**
@@ -23,8 +23,7 @@ class CustomersUploadResponse extends SuccessResponse
     /**
      * @var \RetailCrm\Api\Model\Entity\Customers\FixExternalRow[]
      *
-     * @JMS\Type("array<RetailCrm\Api\Model\Entity\Customers\FixExternalRow>")
-     * @JMS\SerializedName("uploadedCustomers")
+     * @SerializedName("uploadedCustomers")
      */
     public $uploadedCustomers;
 }

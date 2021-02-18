@@ -9,7 +9,7 @@
 
 namespace RetailCrm\Api\Model\Entity;
 
-use JMS\Serializer\Annotation as JMS;
+use Symfony\Component\Serializer\Annotation\SerializedName;
 
 /**
  * Class HistoryUser
@@ -21,9 +21,7 @@ class HistoryUser
 {
     /**
      * @var int
-     *
-     * @JMS\Type("int")
-     * @JMS\SerializedName("id")
+     * @SerializedName("id")
      */
     public $id;
 }

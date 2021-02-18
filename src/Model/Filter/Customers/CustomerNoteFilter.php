@@ -9,7 +9,7 @@
 
 namespace RetailCrm\Api\Model\Filter\Customers;
 
-use RetailCrm\Api\Component\FormData\Mapping as Form;
+use Symfony\Component\Serializer\Annotation\SerializedName;
 
 /**
  * Class CustomerNoteFilter
@@ -22,56 +22,49 @@ class CustomerNoteFilter
     /**
      * @var int[]
      *
-     * @Form\Type("int[]")
-     * @Form\SerializedName("ids")
+     * @SerializedName("ids")
      */
     public $ids;
 
     /**
      * @var int[]
      *
-     * @Form\Type("int[]")
-     * @Form\SerializedName("customerIds")
+     * @SerializedName("customerIds")
      */
     public $customerIds;
 
     /**
      * @var string[]
      *
-     * @Form\Type("string[]")
-     * @Form\SerializedName("customerExternalIds")
+     * @SerializedName("customerExternalIds")
      */
     public $customerExternalIds;
 
     /**
      * @var int[]
      *
-     * @Form\Type("int[]")
-     * @Form\SerializedName("managerIds")
+     * @SerializedName("managerIds")
      */
     public $managerIds;
 
     /**
      * @var string
      *
-     * @Form\Type("string")
-     * @Form\SerializedName("text")
+     * @SerializedName("text")
      */
     public $text;
 
     /**
      * @var string
      *
-     * @Form\Type("string")
-     * @Form\SerializedName("createdAtFrom")
+     * @SerializedName("createdAtFrom")
      */
     public $createdAtFrom;
 
     /**
      * @var string
      *
-     * @Form\Type("string")
-     * @Form\SerializedName("createdAtTo")
+     * @SerializedName("createdAtTo")
      */
     public $createdAtTo;
 }

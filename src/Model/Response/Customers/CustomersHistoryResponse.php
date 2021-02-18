@@ -10,7 +10,7 @@
 namespace RetailCrm\Api\Model\Response\Customers;
 
 use DateTime;
-use JMS\Serializer\Annotation as JMS;
+use Symfony\Component\Serializer\Annotation\SerializedName;
 use RetailCrm\Api\Model\Response\AbstractPaginatedResponse;
 
 /**
@@ -24,16 +24,14 @@ class CustomersHistoryResponse extends AbstractPaginatedResponse
     /**
      * @var DateTime
      *
-     * @JMS\Type("DateTime<'Y-m-d H:i:s'>")
-     * @JMS\SerializedName("generatedAt")
+     * @SerializedName("generatedAt")
      */
     public $generatedAt;
 
     /**
      * @var \RetailCrm\Api\Model\Entity\Customers\CustomerHistory[]
      *
-     * @JMS\Type("array<RetailCrm\Api\Model\Entity\Customers\CustomerHistory>")
-     * @JMS\SerializedName("history")
+     * @SerializedName("history")
      */
     public $history;
 }

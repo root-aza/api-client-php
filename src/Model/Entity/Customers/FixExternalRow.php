@@ -9,7 +9,8 @@
 
 namespace RetailCrm\Api\Model\Entity\Customers;
 
-use JMS\Serializer\Annotation as JMS;
+use RetailCrm\Api\Model\Entity\Entity;
+use Symfony\Component\Serializer\Annotation\SerializedName;
 
 /**
  * Class FixExternalRow
@@ -17,21 +18,17 @@ use JMS\Serializer\Annotation as JMS;
  * @category FixExternalRow
  * @package  RetailCrm\Api\Model\Entity\Customers
  */
-class FixExternalRow
+class FixExternalRow implements Entity
 {
     /**
      * @var int
-     *
-     * @JMS\Type("int")
-     * @JMS\SerializedName("id")
+     * @SerializedName("id")
      */
     public $id;
 
     /**
      * @var string
-     *
-     * @JMS\Type("string")
-     * @JMS\SerializedName("externalId")
+     * @SerializedName("externalId")
      */
     public $externalId;
 

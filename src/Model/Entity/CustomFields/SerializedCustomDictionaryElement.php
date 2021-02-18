@@ -9,7 +9,7 @@
 
 namespace RetailCrm\Api\Model\Entity\CustomFields;
 
-use JMS\Serializer\Annotation as JMS;
+use Symfony\Component\Serializer\Annotation\SerializedName;
 
 /**
  * Class SerializedCustomDictionaryElement
@@ -21,25 +21,19 @@ class SerializedCustomDictionaryElement
 {
     /**
      * @var string
-     *
-     * @JMS\Type("string")
-     * @JMS\SerializedName("name")
+     * @SerializedName("name")
      */
     public $name;
 
     /**
      * @var string
-     *
-     * @JMS\Type("string")
-     * @JMS\SerializedName("code")
+     * @SerializedName("code")
      */
     public $code;
 
     /**
      * @var int
-     *
-     * @JMS\Type("int")
-     * @JMS\SerializedName("ordering")
+     * @SerializedName("ordering")
      */
     public $ordering;
 }

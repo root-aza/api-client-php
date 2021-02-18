@@ -9,7 +9,7 @@
 
 namespace RetailCrm\Api\Model\Response;
 
-use JMS\Serializer\Annotation as JMS;
+use Symfony\Component\Serializer\Annotation\SerializedName;
 
 /**
  * Class ErrorResponse
@@ -29,17 +29,13 @@ class ErrorResponse extends SuccessResponse
 
     /**
      * @var string[]
-     *
-     * @JMS\Type("array")
-     * @JMS\SerializedName("errors")
+     * @SerializedName("errors")
      */
     public $errors;
 
     /**
      * @var string
-     *
-     * @JMS\Type("string")
-     * @JMS\SerializedName("errorMsg")
+     * @SerializedName("errorMsg")
      */
     public $errorMsg;
 }

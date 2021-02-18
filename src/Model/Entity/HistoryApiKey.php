@@ -9,7 +9,7 @@
 
 namespace RetailCrm\Api\Model\Entity;
 
-use JMS\Serializer\Annotation as JMS;
+use Symfony\Component\Serializer\Annotation\SerializedName;
 
 /**
  * Class HistoryApiKey
@@ -21,9 +21,7 @@ class HistoryApiKey
 {
     /**
      * @var bool
-     *
-     * @JMS\Type("bool")
-     * @JMS\SerializedName("current")
+     * @SerializedName("current")
      */
     public $current;
 }

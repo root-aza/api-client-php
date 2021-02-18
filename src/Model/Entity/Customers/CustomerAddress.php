@@ -9,7 +9,7 @@
 
 namespace RetailCrm\Api\Model\Entity\Customers;
 
-use JMS\Serializer\Annotation as JMS;
+use Symfony\Component\Serializer\Annotation\SerializedName;
 
 /**
  * Class CustomerAddress
@@ -21,185 +21,139 @@ class CustomerAddress
 {
     /**
      * @var int
-     *
-     * @JMS\Type("int")
-     * @JMS\SerializedName("id")
+     * @SerializedName("id")
      */
     public $id;
 
     /**
      * @var bool
-     *
-     * @JMS\Type("bool")
-     * @JMS\SerializedName("isMain")
+     * @SerializedName("isMain")
      */
     public $isMain;
 
     /**
      * @var string
-     *
-     * @JMS\Type("string")
-     * @JMS\SerializedName("index")
+     * @SerializedName("index")
      */
     public $index;
 
     /**
      * @var string
-     *
-     * @JMS\Type("string")
-     * @JMS\SerializedName("countryIso")
+     * @SerializedName("countryIso")
      */
     public $countryIso;
 
     /**
      * @var string
-     *
-     * @JMS\Type("string")
-     * @JMS\SerializedName("region")
+     * @SerializedName("region")
      */
     public $region;
 
     /**
      * @var int
-     *
-     * @JMS\Type("int")
-     * @JMS\SerializedName("regionId")
+     * @SerializedName("regionId")
      */
     public $regionId;
 
     /**
      * @var string
-     *
-     * @JMS\Type("string")
-     * @JMS\SerializedName("city")
+     * @SerializedName("city")
      */
     public $city;
 
     /**
      * @var int
-     *
-     * @JMS\Type("int")
-     * @JMS\SerializedName("cityId")
+     * @SerializedName("cityId")
      */
     public $cityId;
 
     /**
      * @var string
-     *
-     * @JMS\Type("string")
-     * @JMS\SerializedName("cityType")
+     * @SerializedName("cityType")
      */
     public $cityType;
 
     /**
      * @var string
-     *
-     * @JMS\Type("string")
-     * @JMS\SerializedName("street")
+     * @SerializedName("street")
      */
     public $street;
 
     /**
      * @var int
-     *
-     * @JMS\Type("int")
-     * @JMS\SerializedName("streetId")
+     * @SerializedName("streetId")
      */
     public $streetId;
 
     /**
      * @var string
-     *
-     * @JMS\Type("string")
-     * @JMS\SerializedName("streetType")
+     * @SerializedName("streetType")
      */
     public $streetType;
 
     /**
      * @var string
-     *
-     * @JMS\Type("string")
-     * @JMS\SerializedName("building")
+     * @SerializedName("building")
      */
     public $building;
 
     /**
      * @var string
-     *
-     * @JMS\Type("string")
-     * @JMS\SerializedName("flat")
+     * @SerializedName("flat")
      */
     public $flat;
 
     /**
      * @var int
-     *
-     * @JMS\Type("int")
-     * @JMS\SerializedName("floor")
+     * @SerializedName("floor")
      */
     public $floor;
 
     /**
      * @var int
-     *
-     * @JMS\Type("int")
-     * @JMS\SerializedName("block")
+     * @SerializedName("block")
      */
     public $block;
 
     /**
      * @var string
-     *
-     * @JMS\Type("string")
-     * @JMS\SerializedName("house")
+     * @SerializedName("house")
      */
     public $house;
 
     /**
      * @var string
-     *
-     * @JMS\Type("string")
-     * @JMS\SerializedName("housing")
+     * @SerializedName("housing")
      */
     public $housing;
 
     /**
      * @var string
-     *
-     * @JMS\Type("string")
-     * @JMS\SerializedName("metro")
+     * @SerializedName("metro")
      */
     public $metro;
 
     /**
      * @var string
-     *
-     * @JMS\Type("string")
-     * @JMS\SerializedName("notes")
+     * @SerializedName("notes")
      */
     public $notes;
 
     /**
      * @var string
-     *
-     * @JMS\Type("string")
-     * @JMS\SerializedName("text")
+     * @SerializedName("text")
      */
     public $text;
 
     /**
      * @var string
-     *
-     * @JMS\Type("string")
-     * @JMS\SerializedName("externalId")
+     * @SerializedName("externalId")
      */
     public $externalId;
 
     /**
      * @var string
-     *
-     * @JMS\Type("string")
-     * @JMS\SerializedName("name")
+     * @SerializedName("name")
      */
     public $name;
 }

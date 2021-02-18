@@ -9,7 +9,7 @@
 
 namespace RetailCrm\Api\Model\Filter\CustomFields;
 
-use RetailCrm\Api\Component\FormData\Mapping as Form;
+use Symfony\Component\Serializer\Annotation\SerializedName;
 
 /**
  * Class CustomFieldFilter
@@ -22,48 +22,42 @@ class CustomFieldFilter
     /**
      * @var string
      *
-     * @Form\Type("string")
-     * @Form\SerializedName("name")
+     * @SerializedName("name")
      */
     public $name;
 
     /**
      * @var string
      *
-     * @Form\Type("string")
-     * @Form\SerializedName("code")
+     * @SerializedName("code")
      */
     public $code;
 
     /**
      * @var string[]
      *
-     * @Form\Type("string[]")
-     * @Form\SerializedName("type")
+     * @SerializedName("type")
      */
     public $type;
 
     /**
      * @var string[]
      *
-     * @Form\Type("string[]")
-     * @Form\SerializedName("viewMode")
+     * @SerializedName("viewMode")
      */
     public $viewMode;
 
     /**
      * @var string[]
      *
-     * @Form\Type("string[]")
-     * @Form\SerializedName("displayArea")
+     * @SerializedName("displayArea")
      */
     public $displayArea;
 
     /**
      * @var string
      *
-     * @Form\Type("string")
-     * @Form\SerializedName("entity")
+     * @SerializedName("entity")
      */
     public $entity;
 }

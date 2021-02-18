@@ -9,7 +9,7 @@
 
 namespace RetailCrm\Api\Model\Response\Customers;
 
-use JMS\Serializer\Annotation as JMS;
+use Symfony\Component\Serializer\Annotation\SerializedName;
 use RetailCrm\Api\Model\Response\SuccessResponse;
 
 /**
@@ -23,8 +23,7 @@ class CustomersGetResponse extends SuccessResponse
     /**
      * @var \RetailCrm\Api\Model\Entity\Customers\Customer
      *
-     * @JMS\Type("RetailCrm\Api\Model\Entity\Customers\Customer")
-     * @JMS\SerializedName("customer")
+     * @SerializedName("customer")
      */
     public $customer;
 }

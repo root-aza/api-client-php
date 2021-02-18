@@ -9,7 +9,7 @@
 
 namespace RetailCrm\Api\Model\Request\Customers;
 
-use RetailCrm\Api\Component\FormData\Mapping as Form;
+use Symfony\Component\Serializer\Annotation\SerializedName;
 use RetailCrm\Api\Interfaces\RequestInterface;
 
 /**
@@ -21,18 +21,16 @@ use RetailCrm\Api\Interfaces\RequestInterface;
 class CustomersCombineRequest implements RequestInterface
 {
     /**
-     * @var \RetailCrm\Api\Enum\Customers\SerializedCustomerReference
+     * @var \RetailCrm\Api\Model\Entity\Customers\SerializedCustomerReference
      *
-     * @Form\Type("RetailCrm\Api\Enum\Customers\SerializedCustomerReference")
-     * @Form\SerializedName("resultCustomer")
+     * @SerializedName("resultCustomer")
      */
     public $resultCustomer;
 
     /**
-     * @var \RetailCrm\Api\Enum\Customers\SerializedCustomerReference[]
+     * @var \RetailCrm\Api\Model\Entity\Customers\SerializedCustomerReference[]
      *
-     * @Form\Type("RetailCrm\Api\Enum\Customers\SerializedCustomerReference[]")
-     * @Form\SerializedName("customers")
+     * @SerializedName("customers")
      */
     public $customers;
 }

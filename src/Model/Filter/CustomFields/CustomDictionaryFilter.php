@@ -9,7 +9,7 @@
 
 namespace RetailCrm\Api\Model\Filter\CustomFields;
 
-use RetailCrm\Api\Component\FormData\Mapping as Form;
+use Symfony\Component\Serializer\Annotation\SerializedName;
 
 /**
  * Class CustomDictionaryFilter
@@ -22,16 +22,14 @@ class CustomDictionaryFilter
     /**
      * @var string
      *
-     * @Form\Type("string")
-     * @Form\SerializedName("name")
+     * @SerializedName("name")
      */
     public $name;
 
     /**
      * @var string
      *
-     * @Form\Type("string")
-     * @Form\SerializedName("code")
+     * @SerializedName("code")
      */
     public $code;
 }

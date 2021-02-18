@@ -9,7 +9,7 @@
 
 namespace RetailCrm\Api\Model\Entity;
 
-use JMS\Serializer\Annotation as JMS;
+use Symfony\Component\Serializer\Annotation\SerializedName;
 
 /**
  * Class Pagination
@@ -21,33 +21,25 @@ class Pagination
 {
     /**
      * @var int
-     *
-     * @JMS\Type("int")
-     * @JMS\SerializedName("limit")
+     * @SerializedName("limit")
      */
     public $limit;
 
     /**
      * @var int
-     *
-     * @JMS\Type("int")
-     * @JMS\SerializedName("totalCount")
+     * @SerializedName("totalCount")
      */
     public $totalCount;
 
     /**
      * @var int
-     *
-     * @JMS\Type("int")
-     * @JMS\SerializedName("currentPage")
+     * @SerializedName("currentPage")
      */
     public $currentPage;
 
     /**
      * @var int
-     *
-     * @JMS\Type("int")
-     * @JMS\SerializedName("totalPageCount")
+     * @SerializedName("totalPageCount")
      */
     public $totalPageCount;
 }

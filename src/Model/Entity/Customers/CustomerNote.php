@@ -10,7 +10,8 @@
 namespace RetailCrm\Api\Model\Entity\Customers;
 
 use DateTime;
-use JMS\Serializer\Annotation as JMS;
+use RetailCrm\Api\Model\Entity\Entity;
+use Symfony\Component\Serializer\Annotation\SerializedName;
 
 /**
  * Class CustomerNote
@@ -18,45 +19,37 @@ use JMS\Serializer\Annotation as JMS;
  * @category CustomerNote
  * @package  RetailCrm\Api\Model\Entity\Customers
  */
-class CustomerNote
+class CustomerNote implements Entity
 {
     /**
      * @var \RetailCrm\Api\Model\Entity\Customers\Customer
      *
-     * @JMS\Type("RetailCrm\Api\Model\Entity\Customers\Customer")
-     * @JMS\SerializedName("customer")
+     * @SerializedName("customer")
      */
     public $customer;
 
     /**
      * @var int
-     *
-     * @JMS\Type("int")
-     * @JMS\SerializedName("managerId")
+     * @SerializedName("managerId")
      */
     public $managerId;
 
     /**
      * @var int
-     *
-     * @JMS\Type("int")
-     * @JMS\SerializedName("id")
+     * @SerializedName("id")
      */
     public $id;
 
     /**
      * @var string
-     *
-     * @JMS\Type("string")
-     * @JMS\SerializedName("text")
+     * @SerializedName("text")
      */
     public $text;
 
     /**
      * @var DateTime
      *
-     * @JMS\Type("DateTime<'Y-m-d H:i:s'>")
-     * @JMS\SerializedName("createdAt")
+     * @SerializedName("createdAt")
      */
     public $createdAt;
 }
